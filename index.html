@@ -1,0 +1,2204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Word Faker – Free Party Word Game for One Phone</title>
+  <meta name="description" content="Word Faker is a free party word game you play on one phone. Everyone gets the same secret word, one player is faking it, and you have to find out who. No app, no sign-up. Play in English, Danish, Spanish, French, German, Ukrainian and Russian.">
+  <link rel="canonical" href="https://wordfaker.com/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0E1016">
+  <meta name="color-scheme" content="dark">
+  <meta name="application-name" content="Word Faker">
+  <meta name="apple-mobile-web-app-title" content="Word Faker">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Word Faker">
+  <meta property="og:title" content="Word Faker – Free Party Word Game for One Phone">
+  <meta property="og:description" content="Everyone gets the same secret word. One of you is faking it. Find out who. Free, no app, no sign-up, 7 languages.">
+  <meta property="og:url" content="https://wordfaker.com/">
+  <meta property="og:image" content="https://wordfaker.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Word Faker – the free party word game for one phone">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Word Faker – Free Party Word Game for One Phone">
+  <meta name="twitter:description" content="Everyone gets the same secret word. One of you is faking it. Find out who. Free, no app, no sign-up, 7 languages.">
+  <meta name="twitter:image" content="https://wordfaker.com/og-image.png">
+
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word Faker","url":"https://wordfaker.com/","description":"Word Faker is a free party word game you play on one phone. Everyone gets the same secret word, one player is faking it, and you have to find out who. No app, no sign-up. Play in English, Danish, Spanish, French, German, Ukrainian and Russian.","applicationCategory":"GameApplication","genre":"Party game","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"inLanguage":["en","da","es","fr","de","uk","ru"],"image":"https://wordfaker.com/og-image.png","numberOfPlayers":{"@type":"QuantitativeValue","minValue":3,"maxValue":30}}</script>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; }
+    img { max-width: 100%; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+<noscript><p style="padding:24px;font-family:system-ui;color:#F3EFE6;background:#0E1016">Word Faker needs JavaScript to run. Please enable it and reload the page.</p></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@700;800&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0E1016;
+    --surface: #181B24;
+    --surface-2: #20242F;
+    --line: #2C3040;
+    --text: #F3EFE6;
+    --muted: #8E93A3;
+    --accent: #F6B84B;
+    --accent-ink: #1A1200;
+    --evil: #EF4E57;
+    --evil-ink: #2A0508;
+    --ok: #62C48C;
+    --display: "Sofia Sans Semi Condensed", "Arial Narrow", "Segoe UI", system-ui, sans-serif;
+    --body: "Manrope", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --radius: 22px;
+  }
+  * { box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    background-image: radial-gradient(60% 40% at 50% -10%, rgba(246,184,75,0.10), transparent 70%);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: contain;
+  }
+  #app {
+    min-height: 100dvh;
+    max-width: 480px;
+    margin: 0 auto;
+    padding-block: 24px 32px;
+    padding-inline: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .screen.center { justify-content: center; }
+
+  h1, h2, h3 {
+    font-family: var(--display);
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1.02;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h1 { font-size: 3.4rem; }
+  h2 { font-size: 2.1rem; }
+  h3 { font-size: 1.5rem; }
+  p { margin: 0; }
+  .muted { color: var(--muted); }
+  .small { font-size: 0.92rem; }
+  .eyebrow {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .lead { font-size: 1.05rem; color: var(--muted); max-width: 34ch; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+  /* Buttons */
+  .btn {
+    appearance: none;
+    border: 0;
+    border-radius: 999px;
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 16px 22px;
+    cursor: pointer;
+    color: var(--text);
+    background: var(--surface-2);
+    transition: transform 0.08s ease, background 0.15s ease, opacity 0.15s ease;
+    width: 100%;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  .btn.danger { background: var(--evil); color: #fff; }
+  .btn.ghost { background: transparent; border: 1.5px solid var(--line); color: var(--text); }
+  .btn.small { font-size: 0.95rem; padding: 11px 16px; }
+  .btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+  .btn-row { display: flex; flex-direction: column; gap: 10px; }
+  .btn-row.inline { flex-direction: row; flex-wrap: wrap; }
+  .link {
+    appearance: none; background: none; border: 0; padding: 8px;
+    color: var(--muted); font: inherit; font-size: 0.95rem; cursor: pointer;
+    text-decoration: underline; text-underline-offset: 3px;
+  }
+  .link:focus-visible { outline: 2px solid var(--accent); border-radius: 6px; }
+  .icon-btn {
+    appearance: none;
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--surface); border: 1.5px solid var(--line); color: var(--text);
+    font: inherit; font-size: 0.9rem; font-weight: 700;
+    padding: 8px 14px 8px 11px; border-radius: 999px; cursor: pointer;
+    flex-shrink: 0;
+  }
+  .icon-btn svg { width: 17px; height: 17px; }
+  .icon-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* Setup */
+  .add-row { display: flex; gap: 8px; }
+  .add-row input {
+    flex: 1; min-width: 0;
+    font: inherit; font-size: 1.05rem;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1.5px solid var(--line);
+    background: var(--surface);
+    color: var(--text);
+  }
+  .add-row input::placeholder { color: var(--muted); }
+  .add-row input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+  .add-row .btn { width: auto; padding-inline: 20px; border-radius: 14px; }
+
+  .players { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .players li {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--surface);
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    padding: 10px 10px 10px 16px;
+  }
+  .players .num {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    width: 1.4em;
+  }
+  .players .name { flex: 1; font-weight: 600; overflow-wrap: anywhere; }
+  .players .remove {
+    appearance: none; border: 0; background: var(--surface-2); color: var(--muted);
+    width: 36px; height: 36px; border-radius: 10px; cursor: pointer; font-size: 1.1rem; line-height: 1;
+  }
+  .players .remove:hover { color: var(--text); }
+  .players .remove:focus-visible { outline: 2px solid var(--accent); }
+  .empty {
+    border: 1.5px dashed var(--line);
+    border-radius: 14px;
+    padding: 18px 16px;
+    color: var(--muted);
+    text-align: center;
+  }
+  .pool-summary { text-align: center; color: var(--muted); font-size: 0.92rem; }
+  .pool-summary .link { padding: 0 0 0 4px; font-size: inherit; }
+  .pool-summary.warn { color: var(--evil); }
+  .rules {
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .rules summary { cursor: pointer; font-weight: 600; color: var(--text); }
+  .rules p { margin-top: 10px; max-width: 60ch; }
+  .spacer { flex: 1; }
+  .footer { text-align: center; max-width: 40ch; margin: 4px auto 0; line-height: 1.5; }
+
+  /* Settings */
+  .section { display: flex; flex-direction: column; gap: 12px; }
+  .section + .section { border-top: 1px solid var(--line); padding-top: 22px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-weight: 600; font-size: 0.95rem; }
+  .select-wrap { position: relative; }
+  .select-wrap select {
+    appearance: none; -webkit-appearance: none;
+    width: 100%;
+    font: inherit; font-size: 1.05rem; font-weight: 600;
+    padding: 14px 44px 14px 16px;
+    border-radius: 14px;
+    border: 1.5px solid var(--line);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+  }
+  .select-wrap select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .select-wrap::after {
+    content: ''; position: absolute; right: 18px; top: 50%;
+    width: 9px; height: 9px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted);
+    transform: translateY(-70%) rotate(45deg); pointer-events: none;
+  }
+  .cat-tools { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .cat-tools .btn-row { gap: 8px; }
+  .cat-tools .btn { width: auto; }
+  .cats { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .cat {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--surface);
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: border-color 0.12s ease;
+  }
+  .cat:has(input:checked) { border-color: rgba(246,184,75,0.55); }
+  .cat:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .cat input { width: 22px; height: 22px; accent-color: var(--accent); margin: 0; flex-shrink: 0; cursor: pointer; }
+  .cat .cat-text { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .cat .cat-name { font-weight: 700; }
+  .cat .cat-words { color: var(--muted); font-size: 0.85rem; overflow-wrap: anywhere; }
+  .cat .cat-count { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 0.9rem; flex-shrink: 0; }
+  .tag {
+    display: inline-block;
+    font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em;
+    padding: 3px 7px; border-radius: 6px;
+    background: var(--surface-2); color: var(--muted);
+    font-family: var(--body);
+    flex-shrink: 0;
+  }
+  .sticky-bottom {
+    position: sticky; bottom: 0;
+    margin-inline: -20px;
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(180deg, rgba(14,16,22,0), var(--bg) 35%);
+  }
+
+  /* Reveal card */
+  .progress {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-variant-numeric: tabular-nums;
+  }
+  .card {
+    position: relative;
+    height: min(64dvh, 540px);
+    min-height: 400px;
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1.5px solid var(--line);
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .card .secret {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; padding: 24px; text-align: center;
+    overflow: auto;
+  }
+  .word {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2.6rem, 13vw, 4.4rem);
+    line-height: 1;
+    color: var(--accent);
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+    max-width: 100%;
+  }
+  .word.m { font-size: clamp(2.2rem, 10.5vw, 3.6rem); }
+  .word.s { font-size: clamp(1.8rem, 8.5vw, 2.9rem); }
+  .word.xs { font-size: clamp(1.5rem, 7vw, 2.3rem); }
+  .alts { display: flex; flex-direction: column; gap: 8px; align-items: center; width: 100%; }
+  .alt {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.35rem, 6.2vw, 1.9rem);
+    line-height: 1.1;
+    color: var(--text);
+    max-width: 100%;
+  }
+  .alt .alt-word { overflow-wrap: anywhere; text-wrap: balance; }
+  .card.is-evil .word, .card.is-evil .alt { color: var(--evil); }
+  .card.is-evil { background: linear-gradient(180deg, #2A1216 0%, var(--surface) 60%); }
+  .secret .hint { color: var(--muted); max-width: 28ch; font-size: 0.98rem; }
+  .card .cover {
+    position: absolute; inset: 0;
+    background: var(--surface-2);
+    background-image: linear-gradient(180deg, rgba(246,184,75,0.10), transparent 45%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; padding: 28px; text-align: center;
+    touch-action: none;
+    cursor: grab;
+    will-change: transform;
+    transition: transform 0.28s cubic-bezier(.2,.8,.2,1), opacity 0.28s ease;
+  }
+  .card .cover.dragging { transition: none; cursor: grabbing; }
+  .card .cover.gone { transform: translateY(-110%); opacity: 0; pointer-events: none; }
+  .cover .who {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
+    line-height: 1.02;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+  .cover .arrow {
+    margin-top: 18px;
+    width: 44px; height: 44px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--accent); color: var(--accent-ink);
+    font-size: 1.5rem; font-weight: 800; line-height: 1;
+    animation: bob 1.4s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  @media (prefers-reduced-motion: reduce) {
+    .cover .arrow { animation: none; }
+    .card .cover { transition: none; }
+  }
+  .cover:focus-visible { outline: 3px solid var(--accent); outline-offset: -6px; }
+
+  /* Start / result */
+  .big-name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(3rem, 14vw, 4.8rem);
+    line-height: 1;
+    color: var(--accent);
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+  .result {
+    display: flex; flex-direction: column; gap: 6px;
+    background: var(--surface);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+  .result .val {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2.2rem, 10vw, 3.4rem);
+    line-height: 1.02;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+  .result .val.m { font-size: clamp(1.9rem, 8.5vw, 2.9rem); }
+  .result .val.s { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+  .result .val.xs { font-size: clamp(1.35rem, 6vw, 2rem); }
+  .result .alts { align-items: flex-start; margin-top: 4px; }
+  .result .alt { font-size: clamp(1.2rem, 5.5vw, 1.6rem); }
+  .result.evil { border-color: rgba(239,78,87,0.5); }
+  .result.evil .val { color: var(--evil); }
+  .result.word .val { color: var(--accent); }
+  .confirm {
+    display: flex; flex-direction: column; gap: 10px;
+    background: var(--surface);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px;
+  }
+</style>
+
+<main id="app">
+
+  <!-- Opsætning -->
+  <section class="screen" id="screen-setup">
+    <div class="topbar">
+      <p class="eyebrow" data-t="app_eyebrow">Party game for one phone</p>
+      <button class="icon-btn" type="button" id="settings-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>
+        <span data-t="settings">Settings</span>
+      </button>
+    </div>
+    <div>
+      <h1 data-t="title">Word Faker</h1>
+      <p class="lead" data-t="lead">Everyone gets the same secret word. One of you is faking it. Find out who.</p>
+    </div>
+
+    <form class="add-row" id="add-form" autocomplete="off">
+      <input id="name-input" type="text" data-t-ph="name_ph" placeholder="Player name" maxlength="24" enterkeyhint="done" autocapitalize="words">
+      <button class="btn" type="submit" id="add-btn" data-t="add">Add</button>
+    </form>
+
+    <ul class="players" id="player-list"></ul>
+    <div class="empty" id="empty-note"></div>
+
+    <div class="spacer"></div>
+
+    <div>
+      <button class="btn primary" id="start-btn" disabled data-t="start">Start round</button>
+      <p class="pool-summary" id="pool-summary" style="margin-top:10px"></p>
+    </div>
+
+    <details class="rules">
+      <summary data-t="rules_summary">How to play</summary>
+      <p data-t="rules_text">Pass the phone around. When your name is on the screen, swipe up to see your word. One of you sees WORD FAKER instead. Once everyone has looked, the app picks who starts. Take turns talking about the word without saying it. The Word Faker has to bluff, and the rest of you have to catch them. At the end, tap to reveal.</p>
+    </details>
+    <p class="footer muted small" data-t="footer">Word Faker is a free party word game for one phone. No app, no sign-up. Play in English, Danish, Spanish, French, German, Ukrainian and Russian.</p>
+  </section>
+
+  <!-- Indstillinger -->
+  <section class="screen" id="screen-settings" hidden>
+    <div>
+      <p class="eyebrow" data-t="settings">Settings</p>
+    </div>
+
+    <div class="section">
+      <h2 data-t="lang_h">Languages</h2>
+      <p class="lead" data-t="lang_lead"></p>
+      <div class="field">
+        <label for="ui-lang" data-t="ui_lang">App language</label>
+        <div class="select-wrap"><select id="ui-lang"></select></div>
+      </div>
+      <div class="field">
+        <label data-t="show_word_in">Show the word in</label>
+        <ul class="cats" id="lang-list"></ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 data-t="cats_h">Categories</h2>
+      <p class="lead" data-t="cats_lead"></p>
+      <div class="cat-tools">
+        <p class="muted small" id="cat-summary"></p>
+        <div class="btn-row inline">
+          <button class="btn ghost small" type="button" id="select-all-btn" data-t="select_all">Select all</button>
+          <button class="btn ghost small" type="button" id="select-none-btn" data-t="select_none">Deselect all</button>
+        </div>
+      </div>
+      <ul class="cats" id="cat-list"></ul>
+    </div>
+
+    <div class="sticky-bottom">
+      <button class="btn primary" type="button" id="settings-done-btn" data-t="done">Done</button>
+    </div>
+  </section>
+
+  <!-- Afsløring pr. spiller -->
+  <section class="screen" id="screen-reveal" hidden>
+    <div class="progress">
+      <span class="eyebrow" data-t="give_to">Pass the phone to</span>
+      <span class="muted" id="progress-text"></span>
+    </div>
+
+    <div class="card" id="card">
+      <div class="secret" aria-live="polite">
+        <p class="eyebrow" id="secret-label"></p>
+        <div class="word" id="secret-word"></div>
+        <div class="alts" id="secret-alts"></div>
+        <p class="hint" id="secret-hint"></p>
+      </div>
+      <div class="cover" id="cover" role="button" tabindex="0">
+        <div class="who" id="cover-name"></div>
+        <p class="muted" data-t="swipe">Swipe up to see your word</p>
+        <div class="arrow" aria-hidden="true">↑</div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn primary" id="next-btn" hidden data-t="next">Hide and pass on</button>
+      <button class="link" id="tap-reveal" data-t="cant_swipe">Can't swipe? Tap here</button>
+    </div>
+  </section>
+
+  <!-- Hvem starter -->
+  <section class="screen center" id="screen-start" hidden>
+    <div>
+      <p class="eyebrow" data-t="all_seen">Everyone has seen their word</p>
+      <h2 style="margin-top:8px" data-t="starter_is">The one who starts is</h2>
+    </div>
+    <div class="big-name" id="starter-name"></div>
+    <p class="lead" data-t="start_lead"></p>
+
+    <div class="spacer"></div>
+
+    <div class="btn-row" id="reveal-row">
+      <button class="btn ghost" id="ask-reveal-btn" data-t="reveal">Reveal the Word Faker</button>
+    </div>
+    <div class="confirm" id="confirm-box" hidden>
+      <p><strong data-t="confirm_q">Ready to reveal?</strong> <span data-t="confirm_note">That ends the round.</span></p>
+      <button class="btn danger" id="confirm-reveal-btn" data-t="confirm_yes">Yes, reveal the Word Faker</button>
+      <button class="btn ghost" id="cancel-reveal-btn" data-t="confirm_no">Not yet</button>
+    </div>
+  </section>
+
+  <!-- Resultat -->
+  <section class="screen center" id="screen-result" hidden>
+    <p class="eyebrow" data-t="round_over">Round over</p>
+    <div class="result evil">
+      <p class="eyebrow" data-t="evil_was">The Word Faker was</p>
+      <div class="val" id="result-evil"></div>
+    </div>
+    <div class="result word">
+      <p class="eyebrow" data-t="word_was">The word was</p>
+      <div class="val" id="result-word"></div>
+      <div class="alts" id="result-alts"></div>
+      <p class="muted small" id="result-cat" style="margin-top:6px"></p>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="btn-row">
+      <button class="btn primary" id="new-round-btn" data-t="new_round">New round</button>
+      <button class="btn ghost" id="change-players-btn" data-t="change_players">Change players</button>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  // ---------- Sprog ----------
+  // Rækkefølge i alle ordlister: da, en, es, fr, de, uk, ru
+  var LANGS = ['da', 'en', 'es', 'fr', 'de', 'uk', 'ru'];
+  var LANG_NAMES = { da: 'Dansk', en: 'English', es: 'Español', fr: 'Français', de: 'Deutsch', uk: 'Українська', ru: 'Русский' };
+
+  // ---------- Kategorier og ord (direkte oversættelser, samme liste på alle sprog) ----------
+  var CATEGORIES = [
+    { id: 'fruit', name: ['Frugt','Fruit','Fruta','Fruits','Obst','Фрукти','Фрукты'], words: [
+      ['Æble','Apple','Manzana','Pomme','Apfel','Яблуко','Яблоко'],
+      ['Banan','Banana','Plátano','Banane','Banane','Банан','Банан'],
+      ['Pære','Pear','Pera','Poire','Birne','Груша','Груша'],
+      ['Jordbær','Strawberry','Fresa','Fraise','Erdbeere','Полуниця','Клубника'],
+      ['Appelsin','Orange','Naranja','Orange','Orange','Апельсин','Апельсин'],
+      ['Citron','Lemon','Limón','Citron','Zitrone','Лимон','Лимон'],
+      ['Vindrue','Grape','Uva','Raisin','Weintraube','Виноград','Виноград'],
+      ['Vandmelon','Watermelon','Sandía','Pastèque','Wassermelone','Кавун','Арбуз'],
+      ['Ananas','Pineapple','Piña','Ananas','Ananas','Ананас','Ананас'],
+      ['Kirsebær','Cherry','Cereza','Cerise','Kirsche','Вишня','Вишня'],
+      ['Blomme','Plum','Ciruela','Prune','Pflaume','Слива','Слива'],
+      ['Fersken','Peach','Melocotón','Pêche','Pfirsich','Персик','Персик']
+    ]},
+    { id: 'vegetables', name: ['Grøntsager','Vegetables','Verduras','Légumes','Gemüse','Овочі','Овощи'], words: [
+      ['Gulerod','Carrot','Zanahoria','Carotte','Karotte','Морква','Морковь'],
+      ['Kartoffel','Potato','Patata','Pomme de terre','Kartoffel','Картопля','Картофель'],
+      ['Tomat','Tomato','Tomate','Tomate','Tomate','Помідор','Помидор'],
+      ['Agurk','Cucumber','Pepino','Concombre','Gurke','Огірок','Огурец'],
+      ['Løg','Onion','Cebolla','Oignon','Zwiebel','Цибуля','Лук'],
+      ['Broccoli','Broccoli','Brócoli','Brocoli','Brokkoli','Броколі','Брокколи'],
+      ['Majs','Corn','Maíz','Maïs','Mais','Кукурудза','Кукуруза'],
+      ['Ærter','Peas','Guisantes','Petits pois','Erbsen','Горох','Горох'],
+      ['Peberfrugt','Bell pepper','Pimiento','Poivron','Paprika','Перець','Перец'],
+      ['Blomkål','Cauliflower','Coliflor','Chou-fleur','Blumenkohl','Цвітна капуста','Цветная капуста'],
+      ['Champignon','Mushroom','Champiñón','Champignon','Pilz','Гриб','Гриб'],
+      ['Græskar','Pumpkin','Calabaza','Citrouille','Kürbis','Гарбуз','Тыква']
+    ]},
+    { id: 'dishes', name: ['Retter fra hele verden','Dishes from around the world','Platos del mundo','Plats du monde','Gerichte aus aller Welt','Страви з усього світу','Блюда со всего мира'], words: [
+      ['Pizza','Pizza','Pizza','Pizza','Pizza','Піца','Пицца'],
+      ['Burger','Burger','Hamburguesa','Hamburger','Burger','Бургер','Бургер'],
+      ['Sushi','Sushi','Sushi','Sushi','Sushi','Суші','Суши'],
+      ['Taco','Taco','Taco','Taco','Taco','Тако','Тако'],
+      ['Lasagne','Lasagna','Lasaña','Lasagnes','Lasagne','Лазанья','Лазанья'],
+      ['Spaghetti','Spaghetti','Espaguetis','Spaghettis','Spaghetti','Спагеті','Спагетти'],
+      ['Kebab','Kebab','Kebab','Kebab','Kebab','Кебаб','Кебаб'],
+      ['Nudler','Noodles','Fideos','Nouilles','Nudeln','Локшина','Лапша'],
+      ['Forårsrulle','Spring roll','Rollito de primavera','Rouleau de printemps','Frühlingsrolle','Спринг-рол','Спринг-ролл'],
+      ['Pommes frites','French fries','Patatas fritas','Frites','Pommes frites','Картопля фрі','Картофель фри'],
+      ['Omelet','Omelette','Tortilla francesa','Omelette','Omelett','Омлет','Омлет'],
+      ['Suppe','Soup','Sopa','Soupe','Suppe','Суп','Суп']
+    ]},
+    { id: 'breakfast', name: ['Morgenmad','Breakfast','Desayuno','Petit-déjeuner','Frühstück','Сніданок','Завтрак'], words: [
+      ['Brød','Bread','Pan','Pain','Brot','Хліб','Хлеб'],
+      ['Smør','Butter','Mantequilla','Beurre','Butter','Вершкове масло','Сливочное масло'],
+      ['Ost','Cheese','Queso','Fromage','Käse','Сир','Сыр'],
+      ['Æg','Egg','Huevo','Œuf','Ei','Яйце','Яйцо'],
+      ['Bacon','Bacon','Beicon','Bacon','Speck','Бекон','Бекон'],
+      ['Marmelade','Jam','Mermelada','Confiture','Marmelade','Варення','Варенье'],
+      ['Yoghurt','Yogurt','Yogur','Yaourt','Joghurt','Йогурт','Йогурт'],
+      ['Cornflakes','Cornflakes','Cereales','Céréales','Cornflakes','Пластівці','Хлопья'],
+      ['Havregrød','Porridge','Gachas de avena','Porridge','Haferbrei','Вівсянка','Овсянка'],
+      ['Honning','Honey','Miel','Miel','Honig','Мед','Мёд'],
+      ['Pandekage','Pancake','Tortita','Crêpe','Pfannkuchen','Млинець','Блин'],
+      ['Toast','Toast','Tostada','Toast','Toast','Тост','Тост']
+    ]},
+    { id: 'sweets', name: ['Slik og snacks','Sweets and snacks','Dulces y snacks','Sucreries et snacks','Süßes und Snacks','Солодощі та снеки','Сладости и снеки'], words: [
+      ['Kage','Cake','Pastel','Gâteau','Kuchen','Торт','Торт'],
+      ['Is','Ice cream','Helado','Glace','Eis','Морозиво','Мороженое'],
+      ['Chokolade','Chocolate','Chocolate','Chocolat','Schokolade','Шоколад','Шоколад'],
+      ['Bolsjer','Candy','Golosinas','Bonbons','Bonbons','Цукерки','Конфеты'],
+      ['Popcorn','Popcorn','Palomitas','Pop-corn','Popcorn','Попкорн','Попкорн'],
+      ['Chips','Crisps','Patatas de bolsa','Chips','Chips','Чипси','Чипсы'],
+      ['Småkage','Cookie','Galleta','Biscuit','Keks','Печиво','Печенье'],
+      ['Donut','Donut','Dónut','Donut','Donut','Пончик','Пончик'],
+      ['Karamel','Caramel','Caramelo','Caramel','Karamell','Карамель','Карамель'],
+      ['Slikkepind','Lollipop','Piruleta','Sucette','Lutscher','Льодяник','Леденец'],
+      ['Tyggegummi','Chewing gum','Chicle','Chewing-gum','Kaugummi','Жуйка','Жвачка'],
+      ['Skumfidus','Marshmallow','Malvavisco','Guimauve','Marshmallow','Маршмелоу','Маршмеллоу']
+    ]},
+    { id: 'drinks', name: ['Drikkevarer','Drinks','Bebidas','Boissons','Getränke','Напої','Напитки'], words: [
+      ['Kaffe','Coffee','Café','Café','Kaffee','Кава','Кофе'],
+      ['Te','Tea','Té','Thé','Tee','Чай','Чай'],
+      ['Mælk','Milk','Leche','Lait','Milch','Молоко','Молоко'],
+      ['Juice','Juice','Zumo','Jus','Saft','Сік','Сок'],
+      ['Sodavand','Soda','Refresco','Soda','Softdrink','Газована вода','Газировка'],
+      ['Øl','Beer','Cerveza','Bière','Bier','Пиво','Пиво'],
+      ['Vin','Wine','Vino','Vin','Wein','Вино','Вино'],
+      ['Vand','Water','Agua','Eau','Wasser','Вода','Вода'],
+      ['Kakao','Hot chocolate','Chocolate caliente','Chocolat chaud','Kakao','Какао','Какао'],
+      ['Smoothie','Smoothie','Batido','Smoothie','Smoothie','Смузі','Смузи'],
+      ['Lemonade','Lemonade','Limonada','Limonade','Limonade','Лимонад','Лимонад'],
+      ['Champagne','Champagne','Champán','Champagne','Champagner','Шампанське','Шампанское']
+    ]},
+    { id: 'pets', name: ['Kæledyr','Pets','Mascotas','Animaux de compagnie','Haustiere','Домашні улюбленці','Домашние питомцы'], words: [
+      ['Hund','Dog','Perro','Chien','Hund','Собака','Собака'],
+      ['Kat','Cat','Gato','Chat','Katze','Кіт','Кот'],
+      ['Kanin','Rabbit','Conejo','Lapin','Kaninchen','Кролик','Кролик'],
+      ['Hamster','Hamster','Hámster','Hamster','Hamster',"Хом'як",'Хомяк'],
+      ['Marsvin','Guinea pig','Cobaya',"Cochon d'Inde",'Meerschweinchen','Морська свинка','Морская свинка'],
+      ['Guldfisk','Goldfish','Pez de colores','Poisson rouge','Goldfisch','Золота рибка','Золотая рыбка'],
+      ['Undulat','Budgie','Periquito','Perruche','Wellensittich','Хвилястий папуга','Волнистый попугай'],
+      ['Skildpadde','Turtle','Tortuga','Tortue','Schildkröte','Черепаха','Черепаха'],
+      ['Papegøje','Parrot','Loro','Perroquet','Papagei','Папуга','Попугай'],
+      ['Hvalp','Puppy','Cachorro','Chiot','Welpe','Цуценя','Щенок'],
+      ['Killing','Kitten','Gatito','Chaton','Kätzchen','Кошеня','Котёнок'],
+      ['Slange','Snake','Serpiente','Serpent','Schlange','Змія','Змея']
+    ]},
+    { id: 'farm', name: ['Bondegårdsdyr','Farm animals','Animales de granja','Animaux de la ferme','Bauernhoftiere','Тварини на фермі','Животные на ферме'], words: [
+      ['Ko','Cow','Vaca','Vache','Kuh','Корова','Корова'],
+      ['Gris','Pig','Cerdo','Cochon','Schwein','Свиня','Свинья'],
+      ['Får','Sheep','Oveja','Mouton','Schaf','Вівця','Овца'],
+      ['Ged','Goat','Cabra','Chèvre','Ziege','Коза','Коза'],
+      ['Høne','Hen','Gallina','Poule','Henne','Курка','Курица'],
+      ['Hane','Rooster','Gallo','Coq','Hahn','Півень','Петух'],
+      ['And','Duck','Pato','Canard','Ente','Качка','Утка'],
+      ['Gås','Goose','Ganso','Oie','Gans','Гуска','Гусь'],
+      ['Kalkun','Turkey','Pavo','Dinde','Truthahn','Індик','Индюк'],
+      ['Hest','Horse','Caballo','Cheval','Pferd','Кінь','Лошадь'],
+      ['Æsel','Donkey','Burro','Âne','Esel','Осел','Осёл'],
+      ['Lam','Lamb','Cordero','Agneau','Lamm','Ягня','Ягнёнок']
+    ]},
+    { id: 'wild', name: ['Vilde dyr','Wild animals','Animales salvajes','Animaux sauvages','Wilde Tiere','Дикі тварини','Дикие животные'], words: [
+      ['Elefant','Elephant','Elefante','Éléphant','Elefant','Слон','Слон'],
+      ['Løve','Lion','León','Lion','Löwe','Лев','Лев'],
+      ['Tiger','Tiger','Tigre','Tigre','Tiger','Тигр','Тигр'],
+      ['Abe','Monkey','Mono','Singe','Affe','Мавпа','Обезьяна'],
+      ['Giraf','Giraffe','Jirafa','Girafe','Giraffe','Жираф','Жираф'],
+      ['Zebra','Zebra','Cebra','Zèbre','Zebra','Зебра','Зебра'],
+      ['Bjørn','Bear','Oso','Ours','Bär','Ведмідь','Медведь'],
+      ['Ulv','Wolf','Lobo','Loup','Wolf','Вовк','Волк'],
+      ['Ræv','Fox','Zorro','Renard','Fuchs','Лисиця','Лиса'],
+      ['Hjort','Deer','Ciervo','Cerf','Hirsch','Олень','Олень'],
+      ['Næsehorn','Rhinoceros','Rinoceronte','Rhinocéros','Nashorn','Носоріг','Носорог'],
+      ['Flodhest','Hippopotamus','Hipopótamo','Hippopotame','Nilpferd','Бегемот','Бегемот']
+    ]},
+    { id: 'sea', name: ['Havdyr','Sea animals','Animales marinos','Animaux marins','Meerestiere','Морські тварини','Морские животные'], words: [
+      ['Haj','Shark','Tiburón','Requin','Hai','Акула','Акула'],
+      ['Hval','Whale','Ballena','Baleine','Wal','Кит','Кит'],
+      ['Delfin','Dolphin','Delfín','Dauphin','Delfin','Дельфін','Дельфин'],
+      ['Blæksprutte','Octopus','Pulpo','Pieuvre','Oktopus','Восьминіг','Осьминог'],
+      ['Krabbe','Crab','Cangrejo','Crabe','Krabbe','Краб','Краб'],
+      ['Reje','Shrimp','Gamba','Crevette','Garnele','Креветка','Креветка'],
+      ['Sæl','Seal','Foca','Phoque','Robbe','Тюлень','Тюлень'],
+      ['Søstjerne','Starfish','Estrella de mar','Étoile de mer','Seestern','Морська зірка','Морская звезда'],
+      ['Vandmand','Jellyfish','Medusa','Méduse','Qualle','Медуза','Медуза'],
+      ['Laks','Salmon','Salmón','Saumon','Lachs','Лосось','Лосось'],
+      ['Ål','Eel','Anguila','Anguille','Aal','Вугор','Угорь'],
+      ['Hummer','Lobster','Langosta','Homard','Hummer','Омар','Омар']
+    ]},
+    { id: 'birds', name: ['Fugle','Birds','Aves','Oiseaux','Vögel','Птахи','Птицы'], words: [
+      ['Ugle','Owl','Búho','Hibou','Eule','Сова','Сова'],
+      ['Svane','Swan','Cisne','Cygne','Schwan','Лебідь','Лебедь'],
+      ['Måge','Seagull','Gaviota','Mouette','Möwe','Чайка','Чайка'],
+      ['Ørn','Eagle','Águila','Aigle','Adler','Орел','Орёл'],
+      ['Pingvin','Penguin','Pingüino','Pingouin','Pinguin','Пінгвін','Пингвин'],
+      ['Struds','Ostrich','Avestruz','Autruche','Strauß','Страус','Страус'],
+      ['Spurv','Sparrow','Gorrión','Moineau','Spatz','Горобець','Воробей'],
+      ['Due','Pigeon','Paloma','Pigeon','Taube','Голуб','Голубь'],
+      ['Krage','Crow','Cuervo','Corbeau','Krähe','Ворона','Ворона'],
+      ['Stork','Stork','Cigüeña','Cigogne','Storch','Лелека','Аист'],
+      ['Flamingo','Flamingo','Flamenco','Flamant rose','Flamingo','Фламінго','Фламинго'],
+      ['Påfugl','Peacock','Pavo real','Paon','Pfau','Павич','Павлин']
+    ]},
+    { id: 'insects', name: ['Insekter og småkryb','Insects and bugs','Insectos y bichos','Insectes et petites bêtes','Insekten und Krabbeltiere','Комахи','Насекомые'], words: [
+      ['Sommerfugl','Butterfly','Mariposa','Papillon','Schmetterling','Метелик','Бабочка'],
+      ['Bi','Bee','Abeja','Abeille','Biene','Бджола','Пчела'],
+      ['Myre','Ant','Hormiga','Fourmi','Ameise','Мураха','Муравей'],
+      ['Edderkop','Spider','Araña','Araignée','Spinne','Павук','Паук'],
+      ['Myg','Mosquito','Mosquito','Moustique','Mücke','Комар','Комар'],
+      ['Flue','Fly','Mosca','Mouche','Fliege','Муха','Муха'],
+      ['Mariehøne','Ladybird','Mariquita','Coccinelle','Marienkäfer','Сонечко','Божья коровка'],
+      ['Snegl','Snail','Caracol','Escargot','Schnecke','Равлик','Улитка'],
+      ['Regnorm','Earthworm','Lombriz','Ver de terre','Regenwurm',"Дощовий черв'як",'Дождевой червь'],
+      ['Græshoppe','Grasshopper','Saltamontes','Sauterelle','Grashüpfer','Коник','Кузнечик'],
+      ['Hveps','Wasp','Avispa','Guêpe','Wespe','Оса','Оса'],
+      ['Bille','Beetle','Escarabajo','Scarabée','Käfer','Жук','Жук']
+    ]},
+    { id: 'body', name: ['Kroppen','The body','El cuerpo','Le corps','Der Körper','Тіло','Тело'], words: [
+      ['Næse','Nose','Nariz','Nez','Nase','Ніс','Нос'],
+      ['Øre','Ear','Oreja','Oreille','Ohr','Вухо','Ухо'],
+      ['Øje','Eye','Ojo','Œil','Auge','Око','Глаз'],
+      ['Mund','Mouth','Boca','Bouche','Mund','Рот','Рот'],
+      ['Hånd','Hand','Mano','Main','Hand','Рука','Рука'],
+      ['Fod','Foot','Pie','Pied','Fuß','Стопа','Стопа'],
+      ['Knæ','Knee','Rodilla','Genou','Knie','Коліно','Колено'],
+      ['Hår','Hair','Pelo','Cheveux','Haare','Волосся','Волосы'],
+      ['Tand','Tooth','Diente','Dent','Zahn','Зуб','Зуб'],
+      ['Mave','Belly','Barriga','Ventre','Bauch','Живіт','Живот'],
+      ['Hjerte','Heart','Corazón','Cœur','Herz','Серце','Сердце'],
+      ['Albue','Elbow','Codo','Coude','Ellbogen','Лікоть','Локоть']
+    ]},
+    { id: 'clothes', name: ['Tøj','Clothes','Ropa','Vêtements','Kleidung','Одяг','Одежда'], words: [
+      ['Hat','Hat','Sombrero','Chapeau','Hut','Капелюх','Шляпа'],
+      ['Jakke','Jacket','Chaqueta','Veste','Jacke','Куртка','Куртка'],
+      ['Bukser','Trousers','Pantalones','Pantalon','Hose','Штани','Брюки'],
+      ['Kjole','Dress','Vestido','Robe','Kleid','Сукня','Платье'],
+      ['Sweater','Sweater','Jersey','Pull','Pullover','Светр','Свитер'],
+      ['Sokker','Socks','Calcetines','Chaussettes','Socken','Шкарпетки','Носки'],
+      ['Handsker','Gloves','Guantes','Gants','Handschuhe','Рукавички','Перчатки'],
+      ['Halstørklæde','Scarf','Bufanda','Écharpe','Schal','Шарф','Шарф'],
+      ['Skjorte','Shirt','Camisa','Chemise','Hemd','Сорочка','Рубашка'],
+      ['Nederdel','Skirt','Falda','Jupe','Rock','Спідниця','Юбка'],
+      ['Pyjamas','Pyjamas','Pijama','Pyjama','Schlafanzug','Піжама','Пижама'],
+      ['Sko','Shoes','Zapatos','Chaussures','Schuhe','Взуття','Обувь']
+    ]},
+    { id: 'accessories', name: ['Tilbehør','Accessories','Accesorios','Accessoires','Accessoires','Аксесуари','Аксессуары'], words: [
+      ['Briller','Glasses','Gafas','Lunettes','Brille','Окуляри','Очки'],
+      ['Paraply','Umbrella','Paraguas','Parapluie','Regenschirm','Парасолька','Зонт'],
+      ['Pung','Wallet','Cartera','Portefeuille','Geldbörse','Гаманець','Кошелёк'],
+      ['Armbåndsur','Wristwatch','Reloj de pulsera','Montre','Armbanduhr','Наручний годинник','Наручные часы'],
+      ['Halskæde','Necklace','Collar','Collier','Halskette','Намисто','Ожерелье'],
+      ['Ring','Ring','Anillo','Bague','Ring','Каблучка','Кольцо'],
+      ['Bælte','Belt','Cinturón','Ceinture','Gürtel','Ремінь','Ремень'],
+      ['Solbriller','Sunglasses','Gafas de sol','Lunettes de soleil','Sonnenbrille','Сонцезахисні окуляри','Солнцезащитные очки'],
+      ['Rygsæk','Backpack','Mochila','Sac à dos','Rucksack','Рюкзак','Рюкзак'],
+      ['Kasket','Cap','Gorra','Casquette','Kappe','Кепка','Кепка'],
+      ['Øreringe','Earrings','Pendientes',"Boucles d'oreilles",'Ohrringe','Сережки','Серьги'],
+      ['Håndtaske','Handbag','Bolso','Sac à main','Handtasche','Сумочка','Сумочка']
+    ]},
+    { id: 'furniture', name: ['Møbler','Furniture','Muebles','Meubles','Möbel','Меблі','Мебель'], words: [
+      ['Sofa','Sofa','Sofá','Canapé','Sofa','Диван','Диван'],
+      ['Seng','Bed','Cama','Lit','Bett','Ліжко','Кровать'],
+      ['Stol','Chair','Silla','Chaise','Stuhl','Стілець','Стул'],
+      ['Bord','Table','Mesa','Table','Tisch','Стіл','Стол'],
+      ['Lampe','Lamp','Lámpara','Lampe','Lampe','Лампа','Лампа'],
+      ['Reol','Bookshelf','Estantería','Étagère','Regal','Полиця','Полка'],
+      ['Klædeskab','Wardrobe','Armario','Armoire','Kleiderschrank','Шафа','Шкаф'],
+      ['Kommode','Chest of drawers','Cómoda','Commode','Kommode','Комод','Комод'],
+      ['Spejl','Mirror','Espejo','Miroir','Spiegel','Дзеркало','Зеркало'],
+      ['Gulvtæppe','Carpet','Alfombra','Tapis','Teppich','Килим','Ковёр'],
+      ['Gardin','Curtain','Cortina','Rideau','Vorhang','Штора','Штора'],
+      ['Pude','Pillow','Almohada','Oreiller','Kissen','Подушка','Подушка']
+    ]},
+    { id: 'kitchen', name: ['Køkkenting','Kitchen','Cocina','Cuisine','Küche','Кухня','Кухня'], words: [
+      ['Gryde','Pot','Olla','Casserole','Topf','Каструля','Кастрюля'],
+      ['Stegepande','Frying pan','Sartén','Poêle','Pfanne','Сковорода','Сковорода'],
+      ['Kniv','Knife','Cuchillo','Couteau','Messer','Ніж','Нож'],
+      ['Gaffel','Fork','Tenedor','Fourchette','Gabel','Виделка','Вилка'],
+      ['Ske','Spoon','Cuchara','Cuillère','Löffel','Ложка','Ложка'],
+      ['Tallerken','Plate','Plato','Assiette','Teller','Тарілка','Тарелка'],
+      ['Glas','Glass','Vaso','Verre','Glas','Склянка','Стакан'],
+      ['Kop','Cup','Taza','Tasse','Tasse','Чашка','Чашка'],
+      ['Køleskab','Fridge','Nevera','Réfrigérateur','Kühlschrank','Холодильник','Холодильник'],
+      ['Ovn','Oven','Horno','Four','Backofen','Духовка','Духовка'],
+      ['Kaffemaskine','Coffee maker','Cafetera','Cafetière','Kaffeemaschine','Кавоварка','Кофеварка'],
+      ['Brødrister','Toaster','Tostadora','Grille-pain','Toaster','Тостер','Тостер']
+    ]},
+    { id: 'bathroom', name: ['Badeværelset','Bathroom','Baño','Salle de bain','Badezimmer','Ванна кімната','Ванная'], words: [
+      ['Tandbørste','Toothbrush','Cepillo de dientes','Brosse à dents','Zahnbürste','Зубна щітка','Зубная щётка'],
+      ['Sæbe','Soap','Jabón','Savon','Seife','Мило','Мыло'],
+      ['Håndklæde','Towel','Toalla','Serviette','Handtuch','Рушник','Полотенце'],
+      ['Toiletpapir','Toilet paper','Papel higiénico','Papier toilette','Toilettenpapier','Туалетний папір','Туалетная бумага'],
+      ['Shampoo','Shampoo','Champú','Shampooing','Shampoo','Шампунь','Шампунь'],
+      ['Brusebad','Shower','Ducha','Douche','Dusche','Душ','Душ'],
+      ['Badekar','Bathtub','Bañera','Baignoire','Badewanne','Ванна','Ванна'],
+      ['Toilet','Toilet','Inodoro','Toilettes','Toilette','Унітаз','Унитаз'],
+      ['Hårtørrer','Hair dryer','Secador de pelo','Sèche-cheveux','Föhn','Фен','Фен'],
+      ['Barbermaskine','Razor','Maquinilla de afeitar','Rasoir','Rasierer','Бритва','Бритва'],
+      ['Tandpasta','Toothpaste','Pasta de dientes','Dentifrice','Zahnpasta','Зубна паста','Зубная паста'],
+      ['Badevægt','Bathroom scale','Báscula','Pèse-personne','Waage','Ваги','Весы']
+    ]},
+    { id: 'tools', name: ['Værktøj','Tools','Herramientas','Outils','Werkzeug','Інструменти','Инструменты'], words: [
+      ['Hammer','Hammer','Martillo','Marteau','Hammer','Молоток','Молоток'],
+      ['Skruetrækker','Screwdriver','Destornillador','Tournevis','Schraubenzieher','Викрутка','Отвёртка'],
+      ['Sav','Saw','Sierra','Scie','Säge','Пилка','Пила'],
+      ['Boremaskine','Drill','Taladro','Perceuse','Bohrmaschine','Дриль','Дрель'],
+      ['Søm','Nail','Clavo','Clou','Nagel','Цвях','Гвоздь'],
+      ['Skrue','Screw','Tornillo','Vis','Schraube','Шуруп','Шуруп'],
+      ['Tang','Pliers','Alicates','Pince','Zange','Плоскогубці','Плоскогубцы'],
+      ['Målebånd','Tape measure','Cinta métrica','Mètre ruban','Maßband','Рулетка','Рулетка'],
+      ['Stige','Ladder','Escalera','Échelle','Leiter','Драбина','Стремянка'],
+      ['Pensel','Paintbrush','Brocha','Pinceau','Pinsel','Пензель','Кисть'],
+      ['Skovl','Shovel','Pala','Pelle','Schaufel','Лопата','Лопата'],
+      ['Skruenøgle','Wrench','Llave inglesa','Clé à molette','Schraubenschlüssel','Гайковий ключ','Гаечный ключ']
+    ]},
+    { id: 'electronics', name: ['Elektronik','Electronics','Electrónica','Électronique','Elektronik','Електроніка','Электроника'], words: [
+      ['Telefon','Phone','Teléfono','Téléphone','Handy','Телефон','Телефон'],
+      ['Computer','Computer','Ordenador','Ordinateur','Computer',"Комп'ютер",'Компьютер'],
+      ['Fjernsyn','Television','Televisión','Télévision','Fernseher','Телевізор','Телевизор'],
+      ['Radio','Radio','Radio','Radio','Radio','Радіо','Радио'],
+      ['Kamera','Camera','Cámara','Appareil photo','Kamera','Фотоапарат','Фотоаппарат'],
+      ['Høretelefoner','Headphones','Auriculares','Casque','Kopfhörer','Навушники','Наушники'],
+      ['Tablet','Tablet','Tableta','Tablette','Tablet','Планшет','Планшет'],
+      ['Oplader','Charger','Cargador','Chargeur','Ladegerät','Зарядка','Зарядка'],
+      ['Fjernbetjening','Remote control','Mando a distancia','Télécommande','Fernbedienung','Пульт','Пульт'],
+      ['Printer','Printer','Impresora','Imprimante','Drucker','Принтер','Принтер'],
+      ['Højttaler','Speaker','Altavoz','Enceinte','Lautsprecher','Колонка','Колонка'],
+      ['Spillekonsol','Game console','Consola','Console de jeux','Spielkonsole','Ігрова консоль','Игровая приставка']
+    ]},
+    { id: 'school', name: ['Skoleting','School supplies','Material escolar','Fournitures scolaires','Schulsachen','Шкільне приладдя','Школьные принадлежности'], words: [
+      ['Blyant','Pencil','Lápiz','Crayon','Bleistift','Олівець','Карандаш'],
+      ['Kuglepen','Pen','Bolígrafo','Stylo','Kugelschreiber','Ручка','Ручка'],
+      ['Viskelæder','Eraser','Goma de borrar','Gomme','Radiergummi','Гумка','Ластик'],
+      ['Lineal','Ruler','Regla','Règle','Lineal','Лінійка','Линейка'],
+      ['Skoletaske','School bag','Mochila escolar','Cartable','Schulranzen','Шкільний рюкзак','Школьный рюкзак'],
+      ['Bog','Book','Libro','Livre','Buch','Книга','Книга'],
+      ['Tavle','Blackboard','Pizarra','Tableau','Tafel','Дошка','Доска'],
+      ['Penalhus','Pencil case','Estuche','Trousse','Federmäppchen','Пенал','Пенал'],
+      ['Saks','Scissors','Tijeras','Ciseaux','Schere','Ножиці','Ножницы'],
+      ['Lim','Glue','Pegamento','Colle','Kleber','Клей','Клей'],
+      ['Papir','Paper','Papel','Papier','Papier','Папір','Бумага'],
+      ['Madkasse','Lunch box','Fiambrera','Boîte à repas','Brotdose','Ланчбокс','Ланчбокс']
+    ]},
+    { id: 'vehicles', name: ['Køretøjer','Vehicles','Vehículos','Véhicules','Fahrzeuge','Транспорт','Транспорт'], words: [
+      ['Bil','Car','Coche','Voiture','Auto','Автомобіль','Машина'],
+      ['Cykel','Bicycle','Bicicleta','Vélo','Fahrrad','Велосипед','Велосипед'],
+      ['Bus','Bus','Autobús','Bus','Bus','Автобус','Автобус'],
+      ['Tog','Train','Tren','Train','Zug','Потяг','Поезд'],
+      ['Motorcykel','Motorcycle','Moto','Moto','Motorrad','Мотоцикл','Мотоцикл'],
+      ['Lastbil','Truck','Camión','Camion','Lastwagen','Вантажівка','Грузовик'],
+      ['Traktor','Tractor','Tractor','Tracteur','Traktor','Трактор','Трактор'],
+      ['Taxa','Taxi','Taxi','Taxi','Taxi','Таксі','Такси'],
+      ['Løbehjul','Scooter','Patinete','Trottinette','Roller','Самокат','Самокат'],
+      ['Skateboard','Skateboard','Monopatín','Skateboard','Skateboard','Скейтборд','Скейтборд'],
+      ['Ambulance','Ambulance','Ambulancia','Ambulance','Krankenwagen','Швидка допомога','Скорая помощь'],
+      ['Brandbil','Fire truck','Camión de bomberos','Camion de pompiers','Feuerwehrauto','Пожежна машина','Пожарная машина']
+    ]},
+    { id: 'water-air', name: ['Til vands og i luften','On water and in the air','En el agua y en el aire',"Sur l'eau et dans les airs",'Zu Wasser und in der Luft','На воді та в повітрі','На воде и в воздухе'], words: [
+      ['Fly','Airplane','Avión','Avion','Flugzeug','Літак','Самолёт'],
+      ['Skib','Ship','Barco','Navire','Schiff','Корабель','Корабль'],
+      ['Båd','Boat','Bote','Bateau','Boot','Човен','Лодка'],
+      ['Helikopter','Helicopter','Helicóptero','Hélicoptère','Hubschrauber','Гелікоптер','Вертолёт'],
+      ['Kajak','Kayak','Kayak','Kayak','Kajak','Каяк','Каяк'],
+      ['Ubåd','Submarine','Submarino','Sous-marin','U-Boot','Підводний човен','Подводная лодка'],
+      ['Færge','Ferry','Ferry','Ferry','Fähre','Пором','Паром'],
+      ['Luftballon','Hot air balloon','Globo aerostático','Montgolfière','Heißluftballon','Повітряна куля','Воздушный шар'],
+      ['Kano','Canoe','Canoa','Canoë','Kanu','Каное','Каноэ'],
+      ['Sejlbåd','Sailboat','Velero','Voilier','Segelboot','Вітрильник','Парусник'],
+      ['Surfbræt','Surfboard','Tabla de surf','Planche de surf','Surfbrett','Дошка для серфінгу','Доска для сёрфинга'],
+      ['Faldskærm','Parachute','Paracaídas','Parachute','Fallschirm','Парашут','Парашют']
+    ]},
+    { id: 'jobs', name: ['Job','Jobs','Profesiones','Métiers','Berufe','Професії','Профессии'], words: [
+      ['Læge','Doctor','Médico','Médecin','Arzt','Лікар','Врач'],
+      ['Sygeplejerske','Nurse','Enfermera','Infirmière','Krankenschwester','Медсестра','Медсестра'],
+      ['Politibetjent','Police officer','Policía','Policier','Polizist','Поліцейський','Полицейский'],
+      ['Brandmand','Firefighter','Bombero','Pompier','Feuerwehrmann','Пожежник','Пожарный'],
+      ['Lærer','Teacher','Profesor','Professeur','Lehrer','Вчитель','Учитель'],
+      ['Kok','Chef','Cocinero','Cuisinier','Koch','Кухар','Повар'],
+      ['Bager','Baker','Panadero','Boulanger','Bäcker','Пекар','Пекарь'],
+      ['Frisør','Hairdresser','Peluquero','Coiffeur','Friseur','Перукар','Парикмахер'],
+      ['Landmand','Farmer','Granjero','Fermier','Bauer','Фермер','Фермер'],
+      ['Pilot','Pilot','Piloto','Pilote','Pilot','Пілот','Пилот'],
+      ['Tandlæge','Dentist','Dentista','Dentiste','Zahnarzt','Стоматолог','Стоматолог'],
+      ['Tømrer','Carpenter','Carpintero','Charpentier','Zimmermann','Тесля','Плотник']
+    ]},
+    { id: 'sports', name: ['Sport','Sports','Deportes','Sports','Sport','Спорт','Спорт'], words: [
+      ['Fodbold','Football','Fútbol','Football','Fußball','Футбол','Футбол'],
+      ['Håndbold','Handball','Balonmano','Handball','Handball','Гандбол','Гандбол'],
+      ['Tennis','Tennis','Tenis','Tennis','Tennis','Теніс','Теннис'],
+      ['Badminton','Badminton','Bádminton','Badminton','Badminton','Бадмінтон','Бадминтон'],
+      ['Svømning','Swimming','Natación','Natation','Schwimmsport','Плавання','Плавание'],
+      ['Golf','Golf','Golf','Golf','Golf','Гольф','Гольф'],
+      ['Boksning','Boxing','Boxeo','Boxe','Boxen','Бокс','Бокс'],
+      ['Basketball','Basketball','Baloncesto','Basket-ball','Basketball','Баскетбол','Баскетбол'],
+      ['Volleyball','Volleyball','Voleibol','Volley-ball','Volleyball','Волейбол','Волейбол'],
+      ['Ishockey','Ice hockey','Hockey sobre hielo','Hockey sur glace','Eishockey','Хокей','Хоккей'],
+      ['Cykelløb','Cycling','Ciclismo','Cyclisme','Radrennen','Велоспорт','Велоспорт'],
+      ['Maraton','Marathon','Maratón','Marathon','Marathon','Марафон','Марафон']
+    ]},
+    { id: 'instruments', name: ['Musikinstrumenter','Musical instruments','Instrumentos musicales','Instruments de musique','Musikinstrumente','Музичні інструменти','Музыкальные инструменты'], words: [
+      ['Guitar','Guitar','Guitarra','Guitare','Gitarre','Гітара','Гитара'],
+      ['Klaver','Piano','Piano','Piano','Klavier','Піаніно','Пианино'],
+      ['Trommer','Drums','Batería','Batterie','Schlagzeug','Барабани','Барабаны'],
+      ['Violin','Violin','Violín','Violon','Geige','Скрипка','Скрипка'],
+      ['Fløjte','Flute','Flauta','Flûte','Flöte','Флейта','Флейта'],
+      ['Trompet','Trumpet','Trompeta','Trompette','Trompete','Труба','Труба'],
+      ['Harmonika','Accordion','Acordeón','Accordéon','Akkordeon','Акордеон','Аккордеон'],
+      ['Saxofon','Saxophone','Saxofón','Saxophone','Saxophon','Саксофон','Саксофон'],
+      ['Harpe','Harp','Arpa','Harpe','Harfe','Арфа','Арфа'],
+      ['Ukulele','Ukulele','Ukelele','Ukulélé','Ukulele','Укулеле','Укулеле'],
+      ['Tamburin','Tambourine','Pandereta','Tambourin','Tamburin','Бубон','Бубен'],
+      ['Cello','Cello','Violonchelo','Violoncelle','Cello','Віолончель','Виолончель']
+    ]},
+    { id: 'hobbies', name: ['Hobbyer','Hobbies','Aficiones','Loisirs','Hobbys','Хобі','Хобби'], words: [
+      ['Fiskeri','Fishing','Pesca','Pêche à la ligne','Angeln','Риболовля','Рыбалка'],
+      ['Camping','Camping','Acampada','Camping','Camping','Кемпінг','Кемпинг'],
+      ['Strikning','Knitting','Punto','Tricot','Stricken',"В'язання",'Вязание'],
+      ['Havearbejde','Gardening','Jardinería','Jardinage','Gärtnern','Садівництво','Садоводство'],
+      ['Bagning','Baking','Repostería','Pâtisserie','Backen','Випічка','Выпечка'],
+      ['Gaming','Gaming','Videojuegos','Jeux vidéo','Gaming','Відеоігри','Видеоигры'],
+      ['Fotografering','Photography','Fotografía','Photographie','Fotografieren','Фотографія','Фотография'],
+      ['Dans','Dancing','Baile','Danse','Tanz','Танці','Танцы'],
+      ['Yoga','Yoga','Yoga','Yoga','Yoga','Йога','Йога'],
+      ['Skak','Chess','Ajedrez','Échecs','Schach','Шахи','Шахматы'],
+      ['Maleri','Painting','Pintura','Peinture','Malen','Живопис','Живопись'],
+      ['Løbetur','Jogging','Footing','Jogging','Joggen','Біг','Бег']
+    ]},
+    { id: 'toys', name: ['Legetøj og leg','Toys and games','Juguetes y juegos','Jouets et jeux','Spielzeug und Spiele','Іграшки та ігри','Игрушки и игры'], words: [
+      ['Dukke','Doll','Muñeca','Poupée','Puppe','Лялька','Кукла'],
+      ['Bamse','Teddy bear','Osito de peluche','Ours en peluche','Teddybär','Плюшевий ведмедик','Плюшевый мишка'],
+      ['Puslespil','Jigsaw puzzle','Puzle','Puzzle','Puzzle','Пазл','Пазл'],
+      ['Terning','Dice','Dado','Dé','Würfel','Гральний кубик','Игральный кубик'],
+      ['Spillekort','Playing cards','Cartas','Cartes à jouer','Spielkarten','Гральні карти','Игральные карты'],
+      ['Byggeklodser','Building blocks','Bloques de construcción','Cubes','Bauklötze','Кубики','Кубики'],
+      ['Sæbebobler','Soap bubbles','Pompas de jabón','Bulles de savon','Seifenblasen','Мильні бульбашки','Мыльные пузыри'],
+      ['Yoyo','Yo-yo','Yoyó','Yo-yo','Jo-Jo','Йо-йо','Йо-йо'],
+      ['Sjippetov','Skipping rope','Comba','Corde à sauter','Springseil','Скакалка','Скакалка'],
+      ['Hulahopring','Hula hoop','Hula hoop','Hula hoop','Hula-Hoop-Reifen','Хула-хуп','Хулахуп'],
+      ['Trampolin','Trampoline','Cama elástica','Trampoline','Trampolin','Батут','Батут'],
+      ['Gynge','Swing','Columpio','Balançoire','Schaukel','Гойдалка','Качели']
+    ]},
+    { id: 'town', name: ['Steder i byen','Places in town','Lugares de la ciudad','Lieux de la ville','Orte in der Stadt','Місця в місті','Места в городе'], words: [
+      ['Skole','School','Escuela','École','Schule','Школа','Школа'],
+      ['Hospital','Hospital','Hospital','Hôpital','Krankenhaus','Лікарня','Больница'],
+      ['Bibliotek','Library','Biblioteca','Bibliothèque','Bibliothek','Бібліотека','Библиотека'],
+      ['Kirke','Church','Iglesia','Église','Kirche','Церква','Церковь'],
+      ['Rådhus','Town hall','Ayuntamiento','Mairie','Rathaus','Ратуша','Мэрия'],
+      ['Supermarked','Supermarket','Supermercado','Supermarché','Supermarkt','Супермаркет','Супермаркет'],
+      ['Bageri','Bakery','Panadería','Boulangerie','Bäckerei','Пекарня','Пекарня'],
+      ['Apotek','Pharmacy','Farmacia','Pharmacie','Apotheke','Аптека','Аптека'],
+      ['Bank','Bank','Banco','Banque','Bank','Банк','Банк'],
+      ['Politistation','Police station','Comisaría','Commissariat','Polizeiwache','Поліцейський відділок','Полицейский участок'],
+      ['Tankstation','Petrol station','Gasolinera','Station-service','Tankstelle','Заправка','Заправка'],
+      ['Banegård','Railway station','Estación de tren','Gare','Bahnhof','Вокзал','Вокзал']
+    ]},
+    { id: 'going-out', name: ['Ud i byen','Going out','Salir','Sorties','Ausgehen','Розваги','Развлечения'], words: [
+      ['Restaurant','Restaurant','Restaurante','Restaurant','Restaurant','Ресторан','Ресторан'],
+      ['Café','Café','Cafetería','Bistrot','Café',"Кав'ярня",'Кафе'],
+      ['Biograf','Cinema','Cine','Cinéma','Kino','Кінотеатр','Кинотеатр'],
+      ['Teater','Theatre','Teatro','Théâtre','Theater','Театр','Театр'],
+      ['Zoo','Zoo','Zoo','Zoo','Zoo','Зоопарк','Зоопарк'],
+      ['Forlystelsespark','Amusement park','Parque de atracciones',"Parc d'attractions",'Freizeitpark','Парк розваг','Парк аттракционов'],
+      ['Cirkus','Circus','Circo','Cirque','Zirkus','Цирк','Цирк'],
+      ['Museum','Museum','Museo','Musée','Museum','Музей','Музей'],
+      ['Svømmehal','Swimming pool','Piscina','Piscine','Schwimmbad','Басейн','Бассейн'],
+      ['Bowlinghal','Bowling alley','Bolera','Bowling','Bowlingbahn','Боулінг','Боулинг'],
+      ['Koncert','Concert','Concierto','Concert','Konzert','Концерт','Концерт'],
+      ['Legeplads','Playground','Parque infantil','Aire de jeux','Spielplatz','Дитячий майданчик','Детская площадка']
+    ]},
+    { id: 'nature', name: ['Natur','Nature','Naturaleza','Nature','Natur','Природа','Природа'], words: [
+      ['Skov','Forest','Bosque','Forêt','Wald','Ліс','Лес'],
+      ['Strand','Beach','Playa','Plage','Strand','Пляж','Пляж'],
+      ['Bjerg','Mountain','Montaña','Montagne','Berg','Гора','Гора'],
+      ['Sø','Lake','Lago','Lac','See','Озеро','Озеро'],
+      ['Hav','Sea','Mar','Mer','Meer','Море','Море'],
+      ['Ø','Island','Isla','Île','Insel','Острів','Остров'],
+      ['Ørken','Desert','Desierto','Désert','Wüste','Пустеля','Пустыня'],
+      ['Jungle','Jungle','Selva','Jungle','Dschungel','Джунглі','Джунгли'],
+      ['Vulkan','Volcano','Volcán','Volcan','Vulkan','Вулкан','Вулкан'],
+      ['Flod','River','Río','Rivière','Fluss','Річка','Река'],
+      ['Vandfald','Waterfall','Cascada','Cascade','Wasserfall','Водоспад','Водопад'],
+      ['Hule','Cave','Cueva','Grotte','Höhle','Печера','Пещера']
+    ]},
+    { id: 'weather', name: ['Vejr','Weather','Tiempo','Météo','Wetter','Погода','Погода'], words: [
+      ['Sol','Sun','Sol','Soleil','Sonne','Сонце','Солнце'],
+      ['Regn','Rain','Lluvia','Pluie','Regen','Дощ','Дождь'],
+      ['Sne','Snow','Nieve','Neige','Schnee','Сніг','Снег'],
+      ['Vind','Wind','Viento','Vent','Wind','Вітер','Ветер'],
+      ['Torden','Thunder','Trueno','Tonnerre','Donner','Грім','Гром'],
+      ['Lyn','Lightning','Relámpago','Éclair','Blitz','Блискавка','Молния'],
+      ['Regnbue','Rainbow','Arcoíris','Arc-en-ciel','Regenbogen','Веселка','Радуга'],
+      ['Tåge','Fog','Niebla','Brouillard','Nebel','Туман','Туман'],
+      ['Hagl','Hail','Granizo','Grêle','Hagel','Град','Град'],
+      ['Storm','Storm','Tormenta','Tempête','Sturm','Буря','Буря'],
+      ['Frost','Frost','Escarcha','Gel','Frost','Мороз','Мороз'],
+      ['Sky','Cloud','Nube','Nuage','Wolke','Хмара','Облако']
+    ]},
+    { id: 'space', name: ['Rummet','Space','El espacio',"L'espace",'Weltraum','Космос','Космос'], words: [
+      ['Måne','Moon','Luna','Lune','Mond','Місяць','Луна'],
+      ['Stjerne','Star','Estrella','Étoile','Stern','Зірка','Звезда'],
+      ['Planet','Planet','Planeta','Planète','Planet','Планета','Планета'],
+      ['Jorden','Earth','La Tierra','La Terre','Erde','Земля','Земля'],
+      ['Mars','Mars','Marte','Mars','Mars','Марс','Марс'],
+      ['Raket','Rocket','Cohete','Fusée','Rakete','Ракета','Ракета'],
+      ['Astronaut','Astronaut','Astronauta','Astronaute','Astronaut','Астронавт','Космонавт'],
+      ['Satellit','Satellite','Satélite','Satellite','Satellit','Супутник','Спутник'],
+      ['Komet','Comet','Cometa','Comète','Komet','Комета','Комета'],
+      ['Teleskop','Telescope','Telescopio','Télescope','Teleskop','Телескоп','Телескоп'],
+      ['Rumskib','Spaceship','Nave espacial','Vaisseau spatial','Raumschiff','Космічний корабель','Космический корабль'],
+      ['UFO','UFO','Ovni','Ovni','UFO','НЛО','НЛО']
+    ]},
+    { id: 'plants', name: ['Planter og blomster','Plants and flowers','Plantas y flores','Plantes et fleurs','Pflanzen und Blumen','Рослини та квіти','Растения и цветы'], words: [
+      ['Rose','Rose','Rosa','Rose','Rose','Троянда','Роза'],
+      ['Tulipan','Tulip','Tulipán','Tulipe','Tulpe','Тюльпан','Тюльпан'],
+      ['Solsikke','Sunflower','Girasol','Tournesol','Sonnenblume','Соняшник','Подсолнух'],
+      ['Mælkebøtte','Dandelion','Diente de león','Pissenlit','Löwenzahn','Кульбаба','Одуванчик'],
+      ['Kaktus','Cactus','Cactus','Cactus','Kaktus','Кактус','Кактус'],
+      ['Egetræ','Oak','Roble','Chêne','Eiche','Дуб','Дуб'],
+      ['Grantræ','Fir tree','Abeto','Sapin','Tanne','Ялина','Ель'],
+      ['Palme','Palm tree','Palmera','Palmier','Palme','Пальма','Пальма'],
+      ['Vintergæk','Snowdrop','Campanilla de invierno','Perce-neige','Schneeglöckchen','Пролісок','Подснежник'],
+      ['Kløver','Clover','Trébol','Trèfle','Klee','Конюшина','Клевер'],
+      ['Lavendel','Lavender','Lavanda','Lavande','Lavendel','Лаванда','Лаванда'],
+      ['Bregne','Fern','Helecho','Fougère','Farn','Папороть','Папоротник']
+    ]},
+    { id: 'celebrations', name: ['Fester og højtider','Celebrations','Celebraciones','Fêtes','Feste und Feiertage','Свята','Праздники'], words: [
+      ['Fødselsdag','Birthday','Cumpleaños','Anniversaire','Geburtstag','День народження','День рождения'],
+      ['Bryllup','Wedding','Boda','Mariage','Hochzeit','Весілля','Свадьба'],
+      ['Nytårsaften',"New Year's Eve",'Nochevieja','Réveillon du Nouvel An','Silvester','Новий рік','Новый год'],
+      ['Jul','Christmas','Navidad','Noël','Weihnachten','Різдво','Рождество'],
+      ['Påske','Easter','Pascua','Pâques','Ostern','Великдень','Пасха'],
+      ['Halloween','Halloween','Halloween','Halloween','Halloween','Гелловін','Хэллоуин'],
+      ['Valentinsdag',"Valentine's Day",'San Valentín','Saint-Valentin','Valentinstag','День святого Валентина','День святого Валентина'],
+      ['Dimission','Graduation','Graduación','Remise des diplômes','Abschlussfeier','Випускний','Выпускной'],
+      ['Karneval','Carnival','Carnaval','Carnaval','Karneval','Карнавал','Карнавал'],
+      ['Fest','Party','Fiesta','Fête','Party','Вечірка','Вечеринка'],
+      ['Fyrværkeri','Fireworks','Fuegos artificiales',"Feu d'artifice",'Feuerwerk','Феєрверк','Фейерверк'],
+      ['Parade','Parade','Desfile','Défilé','Parade','Парад','Парад']
+    ]},
+    { id: 'winter', name: ['Jul og vinter','Christmas and winter','Navidad e invierno','Noël et hiver','Weihnachten und Winter','Різдво та зима','Рождество и зима'], words: [
+      ['Juletræ','Christmas tree','Árbol de Navidad','Sapin de Noël','Weihnachtsbaum','Ялинка','Ёлка'],
+      ['Julemand','Santa Claus','Papá Noel','Père Noël','Weihnachtsmann','Санта-Клаус','Санта-Клаус'],
+      ['Rensdyr','Reindeer','Reno','Renne','Rentier','Північний олень','Северный олень'],
+      ['Snemand','Snowman','Muñeco de nieve','Bonhomme de neige','Schneemann','Сніговик','Снеговик'],
+      ['Kælk','Sled','Trineo','Luge','Schlitten','Санчата','Санки'],
+      ['Skøjter','Ice skates','Patines de hielo','Patins à glace','Schlittschuhe','Ковзани','Коньки'],
+      ['Ski','Skis','Esquís','Skis','Ski','Лижі','Лыжи'],
+      ['Snebold','Snowball','Bola de nieve','Boule de neige','Schneeball','Сніжка','Снежок'],
+      ['Snefnug','Snowflake','Copo de nieve','Flocon de neige','Schneeflocke','Сніжинка','Снежинка'],
+      ['Pejs','Fireplace','Chimenea','Cheminée','Kamin','Камін','Камин'],
+      ['Honningkage','Gingerbread','Pan de jengibre',"Pain d'épices",'Lebkuchen','Імбирний пряник','Имбирный пряник'],
+      ['Iglo','Igloo','Iglú','Igloo','Iglu','Іглу','Иглу']
+    ]},
+    { id: 'fantasy', name: ['Eventyr og fantasi','Fairy tales and fantasy','Cuentos y fantasía','Contes et fantaisie','Märchen und Fantasie','Казки та фентезі','Сказки и фэнтези'], words: [
+      ['Pirat','Pirate','Pirata','Pirate','Pirat','Пірат','Пират'],
+      ['Prinsesse','Princess','Princesa','Princesse','Prinzessin','Принцеса','Принцесса'],
+      ['Konge','King','Rey','Roi','König','Король','Король'],
+      ['Dronning','Queen','Reina','Reine','Königin','Королева','Королева'],
+      ['Ridder','Knight','Caballero','Chevalier','Ritter','Лицар','Рыцарь'],
+      ['Drage','Dragon','Dragón','Dragon','Drache','Дракон','Дракон'],
+      ['Heks','Witch','Bruja','Sorcière','Hexe','Відьма','Ведьма'],
+      ['Spøgelse','Ghost','Fantasma','Fantôme','Gespenst','Привид','Привидение'],
+      ['Trold','Troll','Trol','Troll','Troll','Троль','Тролль'],
+      ['Havfrue','Mermaid','Sirena','Sirène','Meerjungfrau','Русалка','Русалка'],
+      ['Troldmand','Wizard','Mago','Magicien','Zauberer','Чарівник','Волшебник'],
+      ['Enhjørning','Unicorn','Unicornio','Licorne','Einhorn','Єдиноріг','Единорог']
+    ]},
+    { id: 'monsters', name: ['Monstre og helte','Monsters and heroes','Monstruos y héroes','Monstres et héros','Monster und Helden','Монстри та герої','Монстры и герои'], words: [
+      ['Robot','Robot','Robot','Robot','Roboter','Робот','Робот'],
+      ['Superhelt','Superhero','Superhéroe','Super-héros','Superheld','Супергерой','Супергерой'],
+      ['Vampyr','Vampire','Vampiro','Vampire','Vampir','Вампір','Вампир'],
+      ['Zombie','Zombie','Zombi','Zombie','Zombie','Зомбі','Зомби'],
+      ['Dinosaur','Dinosaur','Dinosaurio','Dinosaure','Dinosaurier','Динозавр','Динозавр'],
+      ['Rumvæsen','Alien','Extraterrestre','Extraterrestre','Außerirdischer','Інопланетянин','Инопланетянин'],
+      ['Mumie','Mummy','Momia','Momie','Mumie','Мумія','Мумия'],
+      ['Varulv','Werewolf','Hombre lobo','Loup-garou','Werwolf','Перевертень','Оборотень'],
+      ['Kæmpe','Giant','Gigante','Géant','Riese','Велетень','Великан'],
+      ['Ninja','Ninja','Ninja','Ninja','Ninja','Ніндзя','Ниндзя'],
+      ['Cowboy','Cowboy','Vaquero','Cow-boy','Cowboy','Ковбой','Ковбой'],
+      ['Skelet','Skeleton','Esqueleto','Squelette','Skelett','Скелет','Скелет']
+    ]},
+    { id: 'characters', name: ['Eventyrfigurer','Fairy tale characters','Personajes de cuento','Personnages de contes','Märchenfiguren','Казкові персонажі','Сказочные персонажи'], words: [
+      ['Rødhætte','Little Red Riding Hood','Caperucita Roja','Le Petit Chaperon rouge','Rotkäppchen','Червона Шапочка','Красная Шапочка'],
+      ['Askepot','Cinderella','Cenicienta','Cendrillon','Aschenputtel','Попелюшка','Золушка'],
+      ['Snehvide','Snow White','Blancanieves','Blanche-Neige','Schneewittchen','Білосніжка','Белоснежка'],
+      ['Pinocchio','Pinocchio','Pinocho','Pinocchio','Pinocchio','Піноккіо','Пиноккио'],
+      ['Tornerose','Sleeping Beauty','La Bella Durmiente','La Belle au bois dormant','Dornröschen','Спляча красуня','Спящая красавица'],
+      ['Rapunzel','Rapunzel','Rapunzel','Raiponce','Rapunzel','Рапунцель','Рапунцель'],
+      ['Peter Pan','Peter Pan','Peter Pan','Peter Pan','Peter Pan','Пітер Пен','Питер Пэн'],
+      ['Robin Hood','Robin Hood','Robin Hood','Robin des Bois','Robin Hood','Робін Гуд','Робин Гуд'],
+      ['Aladdin','Aladdin','Aladino','Aladdin','Aladdin','Аладдін','Аладдин'],
+      ['Tarzan','Tarzan','Tarzán','Tarzan','Tarzan','Тарзан','Тарзан'],
+      ['Den grimme ælling','The Ugly Duckling','El patito feo','Le Vilain Petit Canard','Das hässliche Entlein','Гидке каченя','Гадкий утёнок'],
+      ['Den lille havfrue','The Little Mermaid','La Sirenita','La Petite Sirène','Die kleine Meerjungfrau','Русалонька','Русалочка']
+    ]},
+    { id: 'cities', name: ['Storbyer','Big cities','Grandes ciudades','Grandes villes','Großstädte','Великі міста','Большие города'], words: [
+      ['Paris','Paris','París','Paris','Paris','Париж','Париж'],
+      ['London','London','Londres','Londres','London','Лондон','Лондон'],
+      ['New York','New York','Nueva York','New York','New York','Нью-Йорк','Нью-Йорк'],
+      ['Rom','Rome','Roma','Rome','Rom','Рим','Рим'],
+      ['Tokyo','Tokyo','Tokio','Tokyo','Tokio','Токіо','Токио'],
+      ['Berlin','Berlin','Berlín','Berlin','Berlin','Берлін','Берлин'],
+      ['Madrid','Madrid','Madrid','Madrid','Madrid','Мадрид','Мадрид'],
+      ['Amsterdam','Amsterdam','Ámsterdam','Amsterdam','Amsterdam','Амстердам','Амстердам'],
+      ['Istanbul','Istanbul','Estambul','Istanbul','Istanbul','Стамбул','Стамбул'],
+      ['Dubai','Dubai','Dubái','Dubaï','Dubai','Дубай','Дубай'],
+      ['Sydney','Sydney','Sídney','Sydney','Sydney','Сідней','Сидней'],
+      ['Rio de Janeiro','Rio de Janeiro','Río de Janeiro','Rio de Janeiro','Rio de Janeiro','Ріо-де-Жанейро','Рио-де-Жанейро']
+    ]},
+    { id: 'countries', name: ['Lande','Countries','Países','Pays','Länder','Країни','Страны'], words: [
+      ['USA','USA','Estados Unidos','États-Unis','USA','США','США'],
+      ['Kina','China','China','Chine','China','Китай','Китай'],
+      ['Japan','Japan','Japón','Japon','Japan','Японія','Япония'],
+      ['Tyskland','Germany','Alemania','Allemagne','Deutschland','Німеччина','Германия'],
+      ['Frankrig','France','Francia','France','Frankreich','Франція','Франция'],
+      ['Spanien','Spain','España','Espagne','Spanien','Іспанія','Испания'],
+      ['Italien','Italy','Italia','Italie','Italien','Італія','Италия'],
+      ['Brasilien','Brazil','Brasil','Brésil','Brasilien','Бразилія','Бразилия'],
+      ['Australien','Australia','Australia','Australie','Australien','Австралія','Австралия'],
+      ['Egypten','Egypt','Egipto','Égypte','Ägypten','Єгипет','Египет'],
+      ['Indien','India','India','Inde','Indien','Індія','Индия'],
+      ['Canada','Canada','Canadá','Canada','Kanada','Канада','Канада']
+    ]},
+    { id: 'landmarks', name: ['Kendte steder i verden','Famous landmarks','Lugares famosos','Lieux célèbres','Berühmte Orte','Відомі місця','Известные места'], words: [
+      ['Eiffeltårnet','Eiffel Tower','Torre Eiffel','Tour Eiffel','Eiffelturm','Ейфелева вежа','Эйфелева башня'],
+      ['Pyramiderne','The Pyramids','Las pirámides','Les pyramides','Die Pyramiden','Піраміди','Пирамиды'],
+      ['Den Kinesiske Mur','Great Wall of China','Gran Muralla China','Grande Muraille de Chine','Chinesische Mauer','Великий китайський мур','Великая Китайская стена'],
+      ['Frihedsgudinden','Statue of Liberty','Estatua de la Libertad','Statue de la Liberté','Freiheitsstatue','Статуя Свободи','Статуя Свободы'],
+      ['Big Ben','Big Ben','Big Ben','Big Ben','Big Ben','Біг-Бен','Биг-Бен'],
+      ['Colosseum','Colosseum','Coliseo','Colisée','Kolosseum','Колізей','Колизей'],
+      ['Grand Canyon','Grand Canyon','Gran Cañón','Grand Canyon','Grand Canyon','Гранд-Каньйон','Гранд-Каньон'],
+      ['Nordpolen','North Pole','Polo Norte','Pôle Nord','Nordpol','Північний полюс','Северный полюс'],
+      ['Sahara','Sahara','Sáhara','Sahara','Sahara','Сахара','Сахара'],
+      ['Mount Everest','Mount Everest','Everest','Everest','Mount Everest','Еверест','Эверест'],
+      ['Niagara Falls','Niagara Falls','Cataratas del Niágara','Chutes du Niagara','Niagarafälle','Ніагарський водоспад','Ниагарский водопад'],
+      ['Taj Mahal','Taj Mahal','Taj Mahal','Taj Mahal','Taj Mahal','Тадж-Махал','Тадж-Махал']
+    ]},
+    { id: 'subjects', name: ['Skolefag','School subjects','Asignaturas','Matières scolaires','Schulfächer','Шкільні предмети','Школьные предметы'], words: [
+      ['Matematik','Mathematics','Matemáticas','Mathématiques','Mathematik','Математика','Математика'],
+      ['Historie','History','Historia','Histoire','Geschichte','Історія','История'],
+      ['Geografi','Geography','Geografía','Géographie','Geografie','Географія','География'],
+      ['Biologi','Biology','Biología','Biologie','Biologie','Біологія','Биология'],
+      ['Kemi','Chemistry','Química','Chimie','Chemie','Хімія','Химия'],
+      ['Fysik','Physics','Física','Physique','Physik','Фізика','Физика'],
+      ['Musik','Music','Música','Musique','Musik','Музика','Музыка'],
+      ['Idræt','Physical education','Educación física','Éducation physique','Sportunterricht','Фізкультура','Физкультура'],
+      ['Billedkunst','Art','Arte','Arts plastiques','Kunst','Малювання','Рисование'],
+      ['Engelsk','English','Inglés','Anglais','Englisch','Англійська','Английский'],
+      ['Datalogi','Computer science','Informática','Informatique','Informatik','Інформатика','Информатика'],
+      ['Litteratur','Literature','Literatura','Littérature','Literatur','Література','Литература']
+    ]},
+    { id: 'family', name: ['Familie','Family','Familia','Famille','Familie',"Сім'я",'Семья'], words: [
+      ['Mor','Mother','Madre','Mère','Mutter','Мама','Мама'],
+      ['Far','Father','Padre','Père','Vater','Тато','Папа'],
+      ['Bedstemor','Grandmother','Abuela','Grand-mère','Oma','Бабуся','Бабушка'],
+      ['Bedstefar','Grandfather','Abuelo','Grand-père','Opa','Дідусь','Дедушка'],
+      ['Baby','Baby','Bebé','Bébé','Baby','Немовля','Младенец'],
+      ['Tvillinger','Twins','Gemelos','Jumeaux','Zwillinge','Близнюки','Близнецы'],
+      ['Bror','Brother','Hermano','Frère','Bruder','Брат','Брат'],
+      ['Søster','Sister','Hermana','Sœur','Schwester','Сестра','Сестра'],
+      ['Onkel','Uncle','Tío','Oncle','Onkel','Дядько','Дядя'],
+      ['Tante','Aunt','Tía','Tante','Tante','Тітка','Тётя'],
+      ['Fætter','Cousin','Primo','Cousin','Cousin','Двоюрідний брат','Двоюродный брат'],
+      ['Teenager','Teenager','Adolescente','Adolescent','Teenager','Підліток','Подросток']
+    ]},
+    { id: 'feelings', name: ['Følelser','Feelings','Sentimientos','Sentiments','Gefühle','Почуття','Чувства'], words: [
+      ['Glad','Happy','Feliz','Heureux','Glücklich','Щасливий','Счастливый'],
+      ['Vred','Angry','Enfadado','En colère','Wütend','Сердитий','Сердитый'],
+      ['Ked af det','Sad','Triste','Triste','Traurig','Сумний','Грустный'],
+      ['Bange','Scared','Asustado','Effrayé','Ängstlich','Наляканий','Испуганный'],
+      ['Træt','Tired','Cansado','Fatigué','Müde','Втомлений','Уставший'],
+      ['Forelsket','In love','Enamorado','Amoureux','Verliebt','Закоханий','Влюблённый'],
+      ['Jaloux','Jealous','Celoso','Jaloux','Eifersüchtig','Ревнивий','Ревнивый'],
+      ['Stolt','Proud','Orgulloso','Fier','Stolz','Гордий','Гордый'],
+      ['Genert','Shy','Tímido','Timide','Schüchtern',"Сором'язливий",'Застенчивый'],
+      ['Overrasket','Surprised','Sorprendido','Surpris','Überrascht','Здивований','Удивлённый'],
+      ['Nervøs','Nervous','Nervioso','Nerveux','Nervös','Знервований','Нервный'],
+      ['Sulten','Hungry','Hambriento','Affamé','Hungrig','Голодний','Голодный']
+    ]},
+    { id: 'actions', name: ['Handlinger','Actions','Acciones','Actions','Tätigkeiten','Дії','Действия'], words: [
+      ['Løbe','Run','Correr','Courir','Laufen','Бігти','Бежать'],
+      ['Sove','Sleep','Dormir','Dormir','Schlafen','Спати','Спать'],
+      ['Spise','Eat','Comer','Manger','Essen','Їсти','Есть'],
+      ['Danse','Dance','Bailar','Danser','Tanzen','Танцювати','Танцевать'],
+      ['Synge','Sing','Cantar','Chanter','Singen','Співати','Петь'],
+      ['Grine','Laugh','Reír','Rire','Lachen','Сміятися','Смеяться'],
+      ['Svømme','Swim','Nadar','Nager','Schwimmen','Плавати','Плавать'],
+      ['Hoppe','Jump','Saltar','Sauter','Springen','Стрибати','Прыгать'],
+      ['Læse','Read','Leer','Lire','Lesen','Читати','Читать'],
+      ['Køre bil','Drive','Conducir','Conduire','Auto fahren','Водити авто','Водить машину'],
+      ['Græde','Cry','Llorar','Pleurer','Weinen','Плакати','Плакать'],
+      ['Gabe','Yawn','Bostezar','Bâiller','Gähnen','Позіхати','Зевать']
+    ]},
+    { id: 'colours', name: ['Farver','Colours','Colores','Couleurs','Farben','Кольори','Цвета'], words: [
+      ['Rød','Red','Rojo','Rouge','Rot','Червоний','Красный'],
+      ['Blå','Blue','Azul','Bleu','Blau','Синій','Синий'],
+      ['Gul','Yellow','Amarillo','Jaune','Gelb','Жовтий','Жёлтый'],
+      ['Grøn','Green','Verde','Vert','Grün','Зелений','Зелёный'],
+      ['Sort','Black','Negro','Noir','Schwarz','Чорний','Чёрный'],
+      ['Hvid','White','Blanco','Blanc','Weiß','Білий','Белый'],
+      ['Lilla','Purple','Morado','Violet','Lila','Фіолетовий','Фиолетовый'],
+      ['Guld','Gold','Dorado','Doré','Gold','Золотий','Золотой'],
+      ['Sølv','Silver','Plateado','Argenté','Silber','Сріблястий','Серебристый'],
+      ['Brun','Brown','Marrón','Marron','Braun','Коричневий','Коричневый'],
+      ['Grå','Grey','Gris','Gris','Grau','Сірий','Серый'],
+      ['Turkis','Turquoise','Turquesa','Turquoise','Türkis','Бірюзовий','Бирюзовый']
+    ]},
+    { id: 'beach', name: ['Sommer og strand','Summer and beach','Verano y playa','Été et plage','Sommer und Strand','Літо та пляж','Лето и пляж'], words: [
+      ['Sandslot','Sandcastle','Castillo de arena','Château de sable','Sandburg','Замок з піску','Замок из песка'],
+      ['Parasol','Parasol','Sombrilla','Parasol','Sonnenschirm','Пляжна парасолька','Пляжный зонт'],
+      ['Solcreme','Sunscreen','Protector solar','Crème solaire','Sonnencreme','Сонцезахисний крем','Солнцезащитный крем'],
+      ['Badebold','Beach ball','Pelota de playa','Ballon de plage','Wasserball','Пляжний м’яч','Пляжный мяч'],
+      ['Liggestol','Deck chair','Tumbona','Chaise longue','Liegestuhl','Шезлонг','Шезлонг'],
+      ['Muslingeskal','Seashell','Concha','Coquillage','Muschel','Мушля','Ракушка'],
+      ['Klipklapper','Flip-flops','Chanclas','Tongs','Flip-Flops',"В'єтнамки",'Шлёпанцы'],
+      ['Vandpistol','Water pistol','Pistola de agua','Pistolet à eau','Wasserpistole','Водяний пістолет','Водяной пистолет'],
+      ['Dykkermaske','Diving mask','Gafas de buceo','Masque de plongée','Taucherbrille','Маска для плавання','Маска для плавания'],
+      ['Luftmadras','Air mattress','Colchoneta hinchable','Matelas gonflable','Luftmatratze','Надувний матрац','Надувной матрас'],
+      ['Bølge','Wave','Ola','Vague','Welle','Хвиля','Волна'],
+      ['Solhat','Sun hat','Sombrero de sol','Chapeau de soleil','Sonnenhut','Панама','Панамка']
+    ]},
+    { id: 'doctor', name: ['Hos lægen','At the doctor','En el médico','Chez le médecin','Beim Arzt','У лікаря','У врача'], words: [
+      ['Plaster','Plaster','Tirita','Pansement','Pflaster','Пластир','Пластырь'],
+      ['Termometer','Thermometer','Termómetro','Thermomètre','Thermometer','Термометр','Градусник'],
+      ['Sprøjte','Syringe','Jeringa','Seringue','Spritze','Шприц','Шприц'],
+      ['Piller','Pills','Pastillas','Comprimés','Tabletten','Таблетки','Таблетки'],
+      ['Forbinding','Bandage','Venda','Bandage','Verband','Бинт','Бинт'],
+      ['Krykker','Crutches','Muletas','Béquilles','Krücken','Милиці','Костыли'],
+      ['Gips','Cast','Escayola','Plâtre','Gips','Гіпс','Гипс'],
+      ['Feber','Fever','Fiebre','Fièvre','Fieber','Температура','Температура'],
+      ['Forkølelse','Cold','Resfriado','Rhume','Erkältung','Застуда','Простуда'],
+      ['Hovedpine','Headache','Dolor de cabeza','Mal de tête','Kopfschmerzen','Головний біль','Головная боль'],
+      ['Vaccine','Vaccine','Vacuna','Vaccin','Impfung','Вакцина','Вакцина'],
+      ['Stetoskop','Stethoscope','Estetoscopio','Stéthoscope','Stethoskop','Стетоскоп','Стетоскоп']
+    ]},
+    { id: 'garden', name: ['Haven','Garden','Jardín','Jardin','Garten','Сад','Сад'], words: [
+      ['Græsplæne','Lawn','Césped','Pelouse','Rasen','Газон','Газон'],
+      ['Hæk','Hedge','Seto','Haie','Hecke','Живопліт','Живая изгородь'],
+      ['Trillebør','Wheelbarrow','Carretilla','Brouette','Schubkarre','Тачка','Тачка'],
+      ['Vandkande','Watering can','Regadera','Arrosoir','Gießkanne','Лійка','Лейка'],
+      ['Plæneklipper','Lawn mower','Cortacésped','Tondeuse','Rasenmäher','Газонокосарка','Газонокосилка'],
+      ['Drivhus','Greenhouse','Invernadero','Serre','Gewächshaus','Теплиця','Теплица'],
+      ['Hængekøje','Hammock','Hamaca','Hamac','Hängematte','Гамак','Гамак'],
+      ['Grill','Barbecue','Barbacoa','Barbecue','Grill','Мангал','Мангал'],
+      ['Terrasse','Terrace','Terraza','Terrasse','Terrasse','Тераса','Терраса'],
+      ['Fuglehus','Birdhouse','Casita para pájaros','Nichoir','Vogelhaus','Шпаківня','Скворечник'],
+      ['Kompost','Compost','Compost','Compost','Kompost','Компост','Компост'],
+      ['Havelåge','Garden gate','Puerta del jardín','Portail','Gartentor','Хвіртка','Калитка']
+    ]}
+  ];
+
+  // ---------- Appens tekster ----------
+  // En streng, eller et array [ental, få, mange] der vælges efter tallet i {n}/{c}/{k}
+  var STR = {
+    da: {
+      app_eyebrow: 'Selskabsspil til én telefon',
+      title: 'Word Faker',
+      lead: 'Alle får det samme hemmelige ord. Én af jer får det ikke og må fake sig igennem. Find ud af hvem.',
+      name_ph: 'Spillerens navn',
+      add: 'Tilføj',
+      min_players: 'Tilføj mindst 3 spillere for at starte.',
+      more_needed: ['Tilføj 1 spiller mere for at starte.', 'Tilføj {n} spillere mere for at starte.'],
+      start: 'Start runde',
+      start_with: ['Start runde med {n} spiller', 'Start runde med {n} spillere'],
+      remove: 'Fjern {name}',
+      settings: 'Indstillinger',
+      change: 'Skift',
+      pool_all: 'Alle {c} kategorier',
+      pool_some: '{k} af {c} kategorier',
+      pool_none: 'Ingen kategorier valgt.',
+      words: '{n} ord',
+      rules_summary: 'Sådan spiller I',
+      rules_text: 'Telefonen sendes rundt. Når dit navn står på skærmen, swiper du op og ser dit ord. Én af jer ser i stedet WORD FAKER. Når alle har set, vælger appen hvem der starter. Snak om ordet på skift uden at sige det direkte. Word Fakeren skal lade som om, og I andre skal fange Word Fakeren. Til sidst trykker I for at afsløre.',
+      lang_h: 'Sprog',
+      lang_lead: 'Ordet vises på alle de valgte sprog, så alle kan være med.',
+      ui_lang: 'Appens sprog',
+      show_word_in: 'Vis ordet på',
+      cats_h: 'Kategorier',
+      cats_lead: 'Vælg hvilke slags ord der kan komme i spil.',
+      selected: '{k} af {c} valgt',
+      select_all: 'Vælg alle',
+      select_none: 'Fravælg alle',
+      done: 'Færdig',
+      need_cat: 'Vælg mindst én kategori',
+      need_lang: 'Vælg mindst ét sprog',
+      eg: 'fx',
+      give_to: 'Giv telefonen til',
+      progress: '{i} af {n}',
+      swipe: 'Swipe op for at se dit ord',
+      cover_aria: '{name}: swipe op for at se dit ord',
+      your_word: 'Dit ord',
+      you_are: 'Du er',
+      evil: 'WORD FAKER',
+      evil_hint: 'Du kender ikke ordet. Lad som om du gør, og find ud af hvad de andre snakker om.',
+      keep_secret: 'Husk ordet, og hold det for dig selv.',
+      next: 'Skjul og giv videre',
+      cant_swipe: 'Kan du ikke swipe? Tryk her',
+      all_seen: 'Alle har set deres ord',
+      starter_is: 'Den der starter er',
+      start_lead: 'Sig én ting om ordet hver, på skift. Snak, spørg og mistænk. Når I er enige om hvem der er Word Faker, afslører I her.',
+      reveal: 'Afslør Word Fakeren',
+      confirm_q: 'Er I klar til at afsløre?',
+      confirm_note: 'Så er runden slut.',
+      confirm_yes: 'Ja, afslør Word Fakeren',
+      confirm_no: 'Ikke endnu',
+      round_over: 'Runden er slut',
+      evil_was: 'Word Fakeren var',
+      word_was: 'Ordet var',
+      category: 'Kategori',
+      new_round: 'Ny runde',
+      change_players: 'Skift spillere',
+      footer: 'Word Faker er et gratis selskabsspil til én telefon. Ingen app, ingen konto. Spil på dansk, engelsk, spansk, fransk, tysk, ukrainsk og russisk.'
+    },
+    en: {
+      app_eyebrow: 'Party game for one phone',
+      title: 'Word Faker',
+      lead: 'Everyone gets the same secret word. One of you is faking it. Find out who.',
+      name_ph: 'Player name',
+      add: 'Add',
+      min_players: 'Add at least 3 players to start.',
+      more_needed: ['Add 1 more player to start.', 'Add {n} more players to start.'],
+      start: 'Start round',
+      start_with: ['Start round with {n} player', 'Start round with {n} players'],
+      remove: 'Remove {name}',
+      settings: 'Settings',
+      change: 'Change',
+      pool_all: 'All {c} categories',
+      pool_some: '{k} of {c} categories',
+      pool_none: 'No categories selected.',
+      words: ['{n} word', '{n} words'],
+      rules_summary: 'How to play',
+      rules_text: 'Pass the phone around. When your name is on the screen, swipe up to see your word. One of you sees WORD FAKER instead. Once everyone has looked, the app picks who starts. Take turns talking about the word without saying it. The Word Faker has to bluff, and the rest of you have to catch them. At the end, tap to reveal.',
+      lang_h: 'Languages',
+      lang_lead: 'The word is shown in every selected language, so everyone can join in.',
+      ui_lang: 'App language',
+      show_word_in: 'Show the word in',
+      cats_h: 'Categories',
+      cats_lead: 'Choose which kinds of words can come up.',
+      selected: '{k} of {c} selected',
+      select_all: 'Select all',
+      select_none: 'Deselect all',
+      done: 'Done',
+      need_cat: 'Pick at least one category',
+      need_lang: 'Pick at least one language',
+      eg: 'e.g.',
+      give_to: 'Pass the phone to',
+      progress: '{i} of {n}',
+      swipe: 'Swipe up to see your word',
+      cover_aria: '{name}: swipe up to see your word',
+      your_word: 'Your word',
+      you_are: 'You are',
+      evil: 'WORD FAKER',
+      evil_hint: "You don't know the word. Pretend you do, and work out what the others are talking about.",
+      keep_secret: 'Remember the word and keep it to yourself.',
+      next: 'Hide and pass on',
+      cant_swipe: "Can't swipe? Tap here",
+      all_seen: 'Everyone has seen their word',
+      starter_is: 'The one who starts is',
+      start_lead: 'Take turns saying one thing about the word. Talk, ask and suspect. When you agree on who the Word Faker is, reveal it here.',
+      reveal: 'Reveal the Word Faker',
+      confirm_q: 'Ready to reveal?',
+      confirm_note: 'That ends the round.',
+      confirm_yes: 'Yes, reveal the Word Faker',
+      confirm_no: 'Not yet',
+      round_over: 'Round over',
+      evil_was: 'The Word Faker was',
+      word_was: 'The word was',
+      category: 'Category',
+      new_round: 'New round',
+      change_players: 'Change players',
+      footer: 'Word Faker is a free party word game for one phone. No app, no sign-up. Play in English, Danish, Spanish, French, German, Ukrainian and Russian.'
+    },
+    es: {
+      app_eyebrow: 'Juego de fiesta para un solo móvil',
+      title: 'Word Faker',
+      lead: 'Todos reciben la misma palabra secreta. Uno de vosotros está fingiendo. Descubrid quién.',
+      name_ph: 'Nombre del jugador',
+      add: 'Añadir',
+      min_players: 'Añade al menos 3 jugadores para empezar.',
+      more_needed: ['Añade 1 jugador más para empezar.', 'Añade {n} jugadores más para empezar.'],
+      start: 'Empezar ronda',
+      start_with: ['Empezar ronda con {n} jugador', 'Empezar ronda con {n} jugadores'],
+      remove: 'Quitar a {name}',
+      settings: 'Ajustes',
+      change: 'Cambiar',
+      pool_all: 'Las {c} categorías',
+      pool_some: '{k} de {c} categorías',
+      pool_none: 'Ninguna categoría seleccionada.',
+      words: ['{n} palabra', '{n} palabras'],
+      rules_summary: 'Cómo se juega',
+      rules_text: 'El móvil va pasando de mano en mano. Cuando tu nombre aparece en pantalla, desliza hacia arriba para ver tu palabra. Uno de vosotros ve en su lugar WORD FAKER. Cuando todos la han visto, la app elige quién empieza. Por turnos, hablad de la palabra sin decirla. El Word Faker tiene que disimular, y los demás tenéis que pillarlo. Al final, pulsad para revelarlo.',
+      lang_h: 'Idiomas',
+      lang_lead: 'La palabra se muestra en todos los idiomas seleccionados, para que todos puedan jugar.',
+      ui_lang: 'Idioma de la app',
+      show_word_in: 'Mostrar la palabra en',
+      cats_h: 'Categorías',
+      cats_lead: 'Elige qué tipo de palabras pueden salir.',
+      selected: '{k} de {c} seleccionadas',
+      select_all: 'Seleccionar todas',
+      select_none: 'Quitar todas',
+      done: 'Listo',
+      need_cat: 'Elige al menos una categoría',
+      need_lang: 'Elige al menos un idioma',
+      eg: 'p. ej.',
+      give_to: 'Pasa el móvil a',
+      progress: '{i} de {n}',
+      swipe: 'Desliza hacia arriba para ver tu palabra',
+      cover_aria: '{name}: desliza hacia arriba para ver tu palabra',
+      your_word: 'Tu palabra',
+      you_are: 'Eres',
+      evil: 'WORD FAKER',
+      evil_hint: 'No conoces la palabra. Finge que sí y averigua de qué hablan los demás.',
+      keep_secret: 'Recuerda la palabra y no se la digas a nadie.',
+      next: 'Ocultar y pasar',
+      cant_swipe: '¿No puedes deslizar? Pulsa aquí',
+      all_seen: 'Todos han visto su palabra',
+      starter_is: 'Empieza',
+      start_lead: 'Por turnos, decid una cosa sobre la palabra. Hablad, preguntad y sospechad. Cuando estéis de acuerdo en quién es el Word Faker, reveladlo aquí.',
+      reveal: 'Revelar al Word Faker',
+      confirm_q: '¿Listos para revelarlo?',
+      confirm_note: 'Así termina la ronda.',
+      confirm_yes: 'Sí, revelar al Word Faker',
+      confirm_no: 'Todavía no',
+      round_over: 'Fin de la ronda',
+      evil_was: 'El Word Faker era',
+      word_was: 'La palabra era',
+      category: 'Categoría',
+      new_round: 'Nueva ronda',
+      change_players: 'Cambiar jugadores',
+      footer: 'Word Faker es un juego de palabras gratuito para un solo móvil. Sin app, sin registro. Juega en español, inglés, danés, francés, alemán, ucraniano y ruso.'
+    },
+    fr: {
+      app_eyebrow: 'Jeu de société pour un seul téléphone',
+      title: 'Word Faker',
+      lead: "Tout le monde reçoit le même mot secret. L'un de vous fait semblant. Trouvez qui.",
+      name_ph: 'Nom du joueur',
+      add: 'Ajouter',
+      min_players: 'Ajoutez au moins 3 joueurs pour commencer.',
+      more_needed: ['Ajoutez encore 1 joueur pour commencer.', 'Ajoutez encore {n} joueurs pour commencer.'],
+      start: 'Lancer la manche',
+      start_with: ['Lancer la manche avec {n} joueur', 'Lancer la manche avec {n} joueurs'],
+      remove: 'Retirer {name}',
+      settings: 'Réglages',
+      change: 'Modifier',
+      pool_all: 'Les {c} catégories',
+      pool_some: '{k} catégories sur {c}',
+      pool_none: 'Aucune catégorie sélectionnée.',
+      words: ['{n} mot', '{n} mots'],
+      rules_summary: 'Comment jouer',
+      rules_text: "Le téléphone passe de main en main. Quand ton nom s'affiche, glisse vers le haut pour voir ton mot. L'un de vous voit à la place WORD FAKER. Quand tout le monde a regardé, l'appli choisit qui commence. À tour de rôle, parlez du mot sans le dire. Le Word Faker doit bluffer, et les autres doivent le démasquer. À la fin, appuyez pour révéler.",
+      lang_h: 'Langues',
+      lang_lead: "Le mot s'affiche dans toutes les langues sélectionnées, pour que tout le monde puisse jouer.",
+      ui_lang: "Langue de l'appli",
+      show_word_in: 'Afficher le mot en',
+      cats_h: 'Catégories',
+      cats_lead: 'Choisissez quels types de mots peuvent tomber.',
+      selected: '{k} sur {c} sélectionnées',
+      select_all: 'Tout sélectionner',
+      select_none: 'Tout désélectionner',
+      done: 'Terminé',
+      need_cat: 'Choisissez au moins une catégorie',
+      need_lang: 'Choisissez au moins une langue',
+      eg: 'p. ex.',
+      give_to: 'Passe le téléphone à',
+      progress: '{i} sur {n}',
+      swipe: 'Glisse vers le haut pour voir ton mot',
+      cover_aria: '{name} : glisse vers le haut pour voir ton mot',
+      your_word: 'Ton mot',
+      you_are: 'Tu es',
+      evil: 'WORD FAKER',
+      evil_hint: 'Tu ne connais pas le mot. Fais semblant, et découvre de quoi parlent les autres.',
+      keep_secret: 'Retiens le mot et garde-le pour toi.',
+      next: 'Cacher et passer',
+      cant_swipe: 'Impossible de glisser ? Appuie ici',
+      all_seen: 'Tout le monde a vu son mot',
+      starter_is: 'Celui qui commence est',
+      start_lead: "À tour de rôle, dites une chose sur le mot. Parlez, questionnez, soupçonnez. Quand vous êtes d'accord sur qui est le Word Faker, révélez-le ici.",
+      reveal: 'Révéler le Word Faker',
+      confirm_q: 'Prêts à révéler ?',
+      confirm_note: 'Cela termine la manche.',
+      confirm_yes: 'Oui, révéler le Word Faker',
+      confirm_no: 'Pas encore',
+      round_over: 'Manche terminée',
+      evil_was: 'Le Word Faker était',
+      word_was: 'Le mot était',
+      category: 'Catégorie',
+      new_round: 'Nouvelle manche',
+      change_players: 'Changer les joueurs',
+      footer: 'Word Faker est un jeu de mots gratuit pour un seul téléphone. Sans appli, sans inscription. Jouez en français, anglais, danois, espagnol, allemand, ukrainien et russe.'
+    },
+    de: {
+      app_eyebrow: 'Partyspiel für ein Handy',
+      title: 'Word Faker',
+      lead: 'Alle bekommen dasselbe geheime Wort. Einer von euch tut nur so. Findet heraus, wer.',
+      name_ph: 'Name des Spielers',
+      add: 'Hinzufügen',
+      min_players: 'Füge mindestens 3 Spieler hinzu, um zu starten.',
+      more_needed: ['Füge noch 1 Spieler hinzu, um zu starten.', 'Füge noch {n} Spieler hinzu, um zu starten.'],
+      start: 'Runde starten',
+      start_with: ['Runde mit {n} Spieler starten', 'Runde mit {n} Spielern starten'],
+      remove: '{name} entfernen',
+      settings: 'Einstellungen',
+      change: 'Ändern',
+      pool_all: 'Alle {c} Kategorien',
+      pool_some: '{k} von {c} Kategorien',
+      pool_none: 'Keine Kategorien ausgewählt.',
+      words: ['{n} Wort', '{n} Wörter'],
+      rules_summary: 'So wird gespielt',
+      rules_text: 'Das Handy wird herumgereicht. Wenn dein Name auf dem Bildschirm steht, wischst du nach oben und siehst dein Wort. Einer von euch sieht stattdessen WORD FAKER. Wenn alle geschaut haben, wählt die App, wer anfängt. Sprecht abwechselnd über das Wort, ohne es zu nennen. Der Word Faker muss bluffen, und die anderen müssen ihn erwischen. Am Ende tippt ihr, um aufzudecken.',
+      lang_h: 'Sprachen',
+      lang_lead: 'Das Wort wird in allen ausgewählten Sprachen angezeigt, damit alle mitspielen können.',
+      ui_lang: 'Sprache der App',
+      show_word_in: 'Wort anzeigen auf',
+      cats_h: 'Kategorien',
+      cats_lead: 'Wähle, welche Arten von Wörtern vorkommen können.',
+      selected: '{k} von {c} ausgewählt',
+      select_all: 'Alle auswählen',
+      select_none: 'Alle abwählen',
+      done: 'Fertig',
+      need_cat: 'Wähle mindestens eine Kategorie',
+      need_lang: 'Wähle mindestens eine Sprache',
+      eg: 'z. B.',
+      give_to: 'Gib das Handy an',
+      progress: '{i} von {n}',
+      swipe: 'Nach oben wischen, um dein Wort zu sehen',
+      cover_aria: '{name}: nach oben wischen, um dein Wort zu sehen',
+      your_word: 'Dein Wort',
+      you_are: 'Du bist',
+      evil: 'WORD FAKER',
+      evil_hint: 'Du kennst das Wort nicht. Tu so, als ob, und finde heraus, worüber die anderen reden.',
+      keep_secret: 'Merk dir das Wort und behalte es für dich.',
+      next: 'Verstecken und weitergeben',
+      cant_swipe: 'Wischen klappt nicht? Hier tippen',
+      all_seen: 'Alle haben ihr Wort gesehen',
+      starter_is: 'Es beginnt',
+      start_lead: 'Sagt reihum je eine Sache über das Wort. Redet, fragt und verdächtigt. Wenn ihr euch einig seid, wer der Word Faker ist, deckt ihr es hier auf.',
+      reveal: 'Den Word Faker aufdecken',
+      confirm_q: 'Bereit zum Aufdecken?',
+      confirm_note: 'Damit endet die Runde.',
+      confirm_yes: 'Ja, den Word Faker aufdecken',
+      confirm_no: 'Noch nicht',
+      round_over: 'Runde vorbei',
+      evil_was: 'Der Word Faker war',
+      word_was: 'Das Wort war',
+      category: 'Kategorie',
+      new_round: 'Neue Runde',
+      change_players: 'Spieler ändern',
+      footer: 'Word Faker ist ein kostenloses Wortspiel für ein Handy. Keine App, keine Anmeldung. Spielt auf Deutsch, Englisch, Dänisch, Spanisch, Französisch, Ukrainisch und Russisch.'
+    },
+    uk: {
+      app_eyebrow: 'Гра для компанії на одному телефоні',
+      title: 'Word Faker',
+      lead: "Усі отримують одне й те саме таємне слово. Один із вас лише вдає. З'ясуйте, хто.",
+      name_ph: "Ім'я гравця",
+      add: 'Додати',
+      min_players: 'Додайте щонайменше 3 гравців, щоб почати.',
+      more_needed: ['Додайте ще 1 гравця, щоб почати.', 'Додайте ще {n} гравців, щоб почати.', 'Додайте ще {n} гравців, щоб почати.'],
+      start: 'Почати раунд',
+      start_with: ['Почати раунд з {n} гравцем', 'Почати раунд з {n} гравцями', 'Почати раунд з {n} гравцями'],
+      remove: 'Видалити {name}',
+      settings: 'Налаштування',
+      change: 'Змінити',
+      pool_all: ['Усі {c} категорія', 'Усі {c} категорії', 'Усі {c} категорій'],
+      pool_some: '{k} з {c} категорій',
+      pool_none: 'Категорії не вибрано.',
+      words: ['{n} слово', '{n} слова', '{n} слів'],
+      rules_summary: 'Як грати',
+      rules_text: "Телефон передають по колу. Коли на екрані твоє ім'я, проведи пальцем угору й подивись своє слово. Один із вас натомість бачить WORD FAKER. Коли всі подивилися, застосунок обирає, хто починає. По черзі говоріть про слово, не називаючи його. Word Faker має блефувати, а решта — його викрити. Наприкінці натисніть, щоб розкрити.",
+      lang_h: 'Мови',
+      lang_lead: 'Слово показується всіма вибраними мовами, щоб усі могли грати.',
+      ui_lang: 'Мова застосунку',
+      show_word_in: 'Показувати слово мовами',
+      cats_h: 'Категорії',
+      cats_lead: 'Виберіть, які слова можуть трапитися.',
+      selected: '{k} з {c} вибрано',
+      select_all: 'Вибрати всі',
+      select_none: 'Зняти всі',
+      done: 'Готово',
+      need_cat: 'Виберіть хоча б одну категорію',
+      need_lang: 'Виберіть хоча б одну мову',
+      eg: 'напр.',
+      give_to: 'Передай телефон',
+      progress: '{i} з {n}',
+      swipe: 'Проведи вгору, щоб побачити своє слово',
+      cover_aria: '{name}: проведи вгору, щоб побачити своє слово',
+      your_word: 'Твоє слово',
+      you_are: 'Ти',
+      evil: 'WORD FAKER',
+      evil_hint: "Ти не знаєш слова. Вдавай, що знаєш, і з'ясуй, про що говорять інші.",
+      keep_secret: "Запам'ятай слово і нікому не кажи.",
+      next: 'Сховати й передати далі',
+      cant_swipe: 'Не виходить провести? Натисни тут',
+      all_seen: 'Усі побачили своє слово',
+      starter_is: 'Починає',
+      start_lead: 'По черзі кажіть щось одне про слово. Говоріть, питайте, підозрюйте. Коли домовитеся, хто Word Faker, розкрийте це тут.',
+      reveal: 'Розкрити Word Faker',
+      confirm_q: 'Готові розкрити?',
+      confirm_note: 'На цьому раунд закінчиться.',
+      confirm_yes: 'Так, розкрити Word Faker',
+      confirm_no: 'Ще ні',
+      round_over: 'Раунд завершено',
+      evil_was: 'Word Faker — це',
+      word_was: 'Слово було',
+      category: 'Категорія',
+      new_round: 'Новий раунд',
+      change_players: 'Змінити гравців',
+      footer: 'Word Faker — безкоштовна гра в слова для одного телефона. Без застосунку й реєстрації. Грайте українською, англійською, данською, іспанською, французькою, німецькою та російською.'
+    },
+    ru: {
+      app_eyebrow: 'Игра для компании на одном телефоне',
+      title: 'Word Faker',
+      lead: 'Все получают одно и то же секретное слово. Один из вас лишь притворяется. Выясните, кто.',
+      name_ph: 'Имя игрока',
+      add: 'Добавить',
+      min_players: 'Добавьте не менее 3 игроков, чтобы начать.',
+      more_needed: ['Добавьте ещё 1 игрока, чтобы начать.', 'Добавьте ещё {n} игрока, чтобы начать.', 'Добавьте ещё {n} игроков, чтобы начать.'],
+      start: 'Начать раунд',
+      start_with: ['Начать раунд с {n} игроком', 'Начать раунд с {n} игроками', 'Начать раунд с {n} игроками'],
+      remove: 'Удалить {name}',
+      settings: 'Настройки',
+      change: 'Изменить',
+      pool_all: ['Все {c} категория', 'Все {c} категории', 'Все {c} категорий'],
+      pool_some: '{k} из {c} категорий',
+      pool_none: 'Категории не выбраны.',
+      words: ['{n} слово', '{n} слова', '{n} слов'],
+      rules_summary: 'Как играть',
+      rules_text: 'Телефон передают по кругу. Когда на экране твоё имя, проведи пальцем вверх и посмотри своё слово. Один из вас вместо этого видит WORD FAKER. Когда все посмотрели, приложение выбирает, кто начинает. По очереди говорите о слове, не называя его. Word Faker должен блефовать, а остальные — его вычислить. В конце нажмите, чтобы раскрыть.',
+      lang_h: 'Языки',
+      lang_lead: 'Слово показывается на всех выбранных языках, чтобы все могли играть.',
+      ui_lang: 'Язык приложения',
+      show_word_in: 'Показывать слово на языках',
+      cats_h: 'Категории',
+      cats_lead: 'Выберите, какие слова могут попасться.',
+      selected: '{k} из {c} выбрано',
+      select_all: 'Выбрать все',
+      select_none: 'Снять все',
+      done: 'Готово',
+      need_cat: 'Выберите хотя бы одну категорию',
+      need_lang: 'Выберите хотя бы один язык',
+      eg: 'напр.',
+      give_to: 'Передай телефон',
+      progress: '{i} из {n}',
+      swipe: 'Проведи вверх, чтобы увидеть своё слово',
+      cover_aria: '{name}: проведи вверх, чтобы увидеть своё слово',
+      your_word: 'Твоё слово',
+      you_are: 'Ты',
+      evil: 'WORD FAKER',
+      evil_hint: 'Ты не знаешь слова. Делай вид, что знаешь, и выясни, о чём говорят остальные.',
+      keep_secret: 'Запомни слово и никому не говори.',
+      next: 'Скрыть и передать дальше',
+      cant_swipe: 'Не получается провести? Нажми здесь',
+      all_seen: 'Все увидели своё слово',
+      starter_is: 'Начинает',
+      start_lead: 'По очереди говорите что-то одно о слове. Говорите, спрашивайте, подозревайте. Когда договоритесь, кто Word Faker, раскройте это здесь.',
+      reveal: 'Раскрыть Word Faker',
+      confirm_q: 'Готовы раскрыть?',
+      confirm_note: 'На этом раунд закончится.',
+      confirm_yes: 'Да, раскрыть Word Faker',
+      confirm_no: 'Ещё нет',
+      round_over: 'Раунд окончен',
+      evil_was: 'Word Faker — это',
+      word_was: 'Слово было',
+      category: 'Категория',
+      new_round: 'Новый раунд',
+      change_players: 'Изменить игроков',
+      footer: 'Word Faker — бесплатная игра в слова для одного телефона. Без приложения и регистрации. Играйте на русском, английском, датском, испанском, французском, немецком и украинском.'
+    }
+  };
+
+
+  // ---------- Tilstand ----------
+  var state = {
+    phase: 'setup',      // setup | settings | reveal | start | result
+    ui: 'da',            // appens sprog
+    langs: ['da'],       // sprog ordet vises på
+    players: [],
+    disabled: [],        // fravalgte kategori-id'er
+    wordCat: '',         // kategori-id for rundens ord
+    wordIdx: -1,         // index i kategorien
+    evil: -1,
+    turn: 0,
+    revealed: false,
+    starter: -1,
+    used: []             // 'kat:index' der allerede er brugt
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var screens = {
+    setup: $('screen-setup'),
+    settings: $('screen-settings'),
+    reveal: $('screen-reveal'),
+    start: $('screen-start'),
+    result: $('screen-result')
+  };
+
+  // ---------- Oversættelse ----------
+  function pluralIndex(lang, n) {
+    if (lang === 'uk' || lang === 'ru') {
+      var m10 = n % 10, m100 = n % 100;
+      if (m10 === 1 && m100 !== 11) return 0;
+      if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return 1;
+      return 2;
+    }
+    if (lang === 'fr') return n <= 1 ? 0 : 1;
+    return n === 1 ? 0 : 1;
+  }
+  function t(key, vars) {
+    var table = STR[state.ui] || STR.da;
+    var s = table[key];
+    if (s === undefined) s = STR.da[key];
+    if (s === undefined) return key;
+    if (Array.isArray(s)) {
+      var n = 0;
+      if (vars) { n = vars.n !== undefined ? vars.n : (vars.c !== undefined ? vars.c : (vars.k !== undefined ? vars.k : 0)); }
+      s = s[Math.min(pluralIndex(state.ui, n), s.length - 1)];
+    }
+    return String(s).replace(/\{(\w+)\}/g, function (m, k) { return vars && vars[k] !== undefined ? vars[k] : m; });
+  }
+  function li(lang) { return LANGS.indexOf(lang); }
+  function catName(c) { return c.name[li(state.ui)]; }
+  function applyStrings() {
+    document.documentElement.lang = state.ui;
+    var nodes = document.querySelectorAll('[data-t]');
+    for (var i = 0; i < nodes.length; i++) nodes[i].textContent = t(nodes[i].getAttribute('data-t'));
+    var phs = document.querySelectorAll('[data-t-ph]');
+    for (var j = 0; j < phs.length; j++) phs[j].setAttribute('placeholder', t(phs[j].getAttribute('data-t-ph')));
+  }
+
+  // ---------- Lagring ----------
+  function save() {
+    try {
+      localStorage.setItem('wordfaker.players', JSON.stringify(state.players));
+      localStorage.setItem('wordfaker.disabled', JSON.stringify(state.disabled));
+      localStorage.setItem('wordfaker.ui', state.ui);
+      localStorage.setItem('wordfaker.langs', JSON.stringify(state.langs));
+    } catch (e) {}
+  }
+  function validLang(l) { return LANGS.indexOf(l) !== -1; }
+  function detectLang() {
+    try {
+      var cands = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'da'];
+      for (var i = 0; i < cands.length; i++) {
+        var code = String(cands[i]).toLowerCase().split('-')[0];
+        if (validLang(code)) return code;
+      }
+    } catch (e) {}
+    return 'da';
+  }
+  function loadSaved() {
+    var ui = null, langs = null;
+    try {
+      var raw = localStorage.getItem('wordfaker.players');
+      if (raw) {
+        var arr = JSON.parse(raw);
+        if (Array.isArray(arr)) state.players = arr.filter(function (n) { return typeof n === 'string' && n.trim(); }).slice(0, 30);
+      }
+      var rawD = localStorage.getItem('wordfaker.disabled');
+      if (rawD) {
+        var d = JSON.parse(rawD);
+        if (Array.isArray(d)) state.disabled = d.filter(function (id) { return CATEGORIES.some(function (c) { return c.id === id; }); });
+      }
+      ui = localStorage.getItem('wordfaker.ui');
+      var rawL = localStorage.getItem('wordfaker.langs');
+      if (rawL) { var l = JSON.parse(rawL); if (Array.isArray(l)) langs = l.filter(validLang); }
+    } catch (e) {}
+    state.ui = validLang(ui) ? ui : detectLang();
+    state.langs = (langs && langs.length) ? langs : [state.ui];
+  }
+
+  function rand(n) { return Math.floor(Math.random() * n); }
+
+  // ---------- Ordpulje ----------
+  function isEnabled(cat) { return state.disabled.indexOf(cat.id) === -1; }
+  function enabledCategories() { return CATEGORIES.filter(isEnabled); }
+  function poolSize() {
+    return enabledCategories().reduce(function (a, c) { return a + c.words.length; }, 0);
+  }
+  function pickWord() {
+    var all = [];
+    enabledCategories().forEach(function (c) {
+      c.words.forEach(function (w, i) { all.push({ cat: c.id, idx: i, key: c.id + ':' + i }); });
+    });
+    var fresh = all.filter(function (e) { return state.used.indexOf(e.key) === -1; });
+    if (fresh.length === 0) { state.used = []; fresh = all; }
+    var e = fresh[rand(fresh.length)];
+    state.used.push(e.key);
+    return e;
+  }
+  function currentCategory() {
+    for (var i = 0; i < CATEGORIES.length; i++) if (CATEGORIES[i].id === state.wordCat) return CATEGORIES[i];
+    return null;
+  }
+  function wordIn(lang) {
+    var c = currentCategory();
+    if (!c || state.wordIdx < 0) return '';
+    return c.words[state.wordIdx][li(lang)];
+  }
+  function evilIn(lang) { return (STR[lang] || STR.da).evil; }
+  function shownLangs() {
+    var ordered = LANGS.filter(function (l) { return state.langs.indexOf(l) !== -1; });
+    var i = ordered.indexOf(state.ui);
+    if (i > 0) { ordered.splice(i, 1); ordered.unshift(state.ui); }
+    return ordered.length ? ordered : [state.ui];
+  }
+  function sizeClass(str) {
+    var longest = 0;
+    String(str).split(/\s+/).forEach(function (w) { if (w.length > longest) longest = w.length; });
+    return longest > 16 ? 'xs' : longest > 12 ? 's' : longest > 9 ? 'm' : '';
+  }
+  // Skriver ordet (eller "ond") på alle valgte sprog: første sprog stort, resten som linjer med sprogmærke
+  function renderWordSet(mainEl, altsEl, getter, baseClass) {
+    var langs = shownLangs();
+    var main = getter(langs[0]);
+    mainEl.textContent = main;
+    mainEl.className = baseClass + ' ' + sizeClass(main);
+    altsEl.innerHTML = '';
+    for (var i = 1; i < langs.length; i++) {
+      var row = document.createElement('div'); row.className = 'alt';
+      var tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = langs[i].toUpperCase();
+      var w = document.createElement('span'); w.className = 'alt-word'; w.textContent = getter(langs[i]);
+      row.appendChild(tag); row.appendChild(w);
+      altsEl.appendChild(row);
+    }
+  }
+
+  // ---------- Skærme ----------
+  function showScreen(name) {
+    state.phase = name;
+    Object.keys(screens).forEach(function (k) { screens[k].hidden = (k !== name); });
+    window.scrollTo(0, 0);
+  }
+
+  // Opsætning
+  var list = $('player-list');
+  var emptyNote = $('empty-note');
+  var startBtn = $('start-btn');
+  var input = $('name-input');
+  var poolSummary = $('pool-summary');
+
+  function renderPoolSummary() {
+    var cats = enabledCategories().length;
+    var words = poolSize();
+    poolSummary.classList.toggle('warn', cats === 0);
+    poolSummary.innerHTML = '';
+    var txt = document.createElement('span');
+    if (cats === 0) {
+      txt.textContent = t('pool_none');
+    } else if (cats === CATEGORIES.length) {
+      txt.textContent = t('pool_all', { c: CATEGORIES.length }) + ' · ' + t('words', { n: words }) + '.';
+    } else {
+      txt.textContent = t('pool_some', { k: cats, c: CATEGORIES.length }) + ' · ' + t('words', { n: words }) + '.';
+    }
+    var lnk = document.createElement('button');
+    lnk.type = 'button'; lnk.className = 'link'; lnk.textContent = t('change');
+    lnk.addEventListener('click', openSettings);
+    poolSummary.appendChild(txt); poolSummary.appendChild(lnk);
+  }
+
+  function renderPlayers() {
+    list.innerHTML = '';
+    state.players.forEach(function (name, i) {
+      var row = document.createElement('li');
+      var num = document.createElement('span'); num.className = 'num'; num.textContent = (i + 1) + '.';
+      var nm = document.createElement('span'); nm.className = 'name'; nm.textContent = name;
+      var rm = document.createElement('button');
+      rm.className = 'remove'; rm.type = 'button'; rm.textContent = '×';
+      rm.setAttribute('aria-label', t('remove', { name: name }));
+      rm.addEventListener('click', function () {
+        state.players.splice(i, 1);
+        save(); renderPlayers();
+      });
+      row.appendChild(num); row.appendChild(nm); row.appendChild(rm);
+      list.appendChild(row);
+    });
+    var n = state.players.length;
+    emptyNote.hidden = n >= 3;
+    if (n === 0) emptyNote.textContent = t('min_players');
+    else if (n < 3) emptyNote.textContent = t('more_needed', { n: 3 - n });
+    var canStart = n >= 3 && enabledCategories().length > 0 && state.langs.length > 0;
+    startBtn.disabled = !canStart;
+    startBtn.textContent = n >= 3 ? t('start_with', { n: n }) : t('start');
+    renderPoolSummary();
+  }
+
+  $('add-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = input.value.trim().replace(/\s+/g, ' ');
+    if (!name) return;
+    if (state.players.length >= 30) return;
+    state.players.push(name);
+    input.value = '';
+    save(); renderPlayers();
+    input.focus();
+  });
+
+  startBtn.addEventListener('click', function () { startRound(); });
+
+  // Indstillinger
+  var catList = $('cat-list');
+  var catSummary = $('cat-summary');
+  var settingsDone = $('settings-done-btn');
+  var uiSelect = $('ui-lang');
+  var langList = $('lang-list');
+
+  function renderLangs() {
+    uiSelect.innerHTML = '';
+    LANGS.forEach(function (l) {
+      var opt = document.createElement('option');
+      opt.value = l; opt.textContent = LANG_NAMES[l];
+      if (l === state.ui) opt.selected = true;
+      uiSelect.appendChild(opt);
+    });
+    langList.innerHTML = '';
+    LANGS.forEach(function (l) {
+      var row = document.createElement('li');
+      var label = document.createElement('label'); label.className = 'cat';
+      var cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.id = 'lang-' + l; cb.checked = state.langs.indexOf(l) !== -1;
+      cb.addEventListener('change', function () {
+        var idx = state.langs.indexOf(l);
+        if (cb.checked && idx === -1) state.langs.push(l);
+        if (!cb.checked && idx !== -1) state.langs.splice(idx, 1);
+        save(); renderSettingsSummary();
+      });
+      var text = document.createElement('span'); text.className = 'cat-text';
+      var nm = document.createElement('span'); nm.className = 'cat-name'; nm.textContent = LANG_NAMES[l];
+      text.appendChild(nm);
+      var tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = l.toUpperCase();
+      label.appendChild(cb); label.appendChild(text); label.appendChild(tag);
+      row.appendChild(label);
+      langList.appendChild(row);
+    });
+  }
+  uiSelect.addEventListener('change', function () {
+    var l = uiSelect.value;
+    if (!validLang(l)) return;
+    state.ui = l;
+    if (state.langs.indexOf(l) === -1) state.langs.push(l);
+    save();
+    applyStrings();
+    renderLangs();
+    renderCategories();
+  });
+
+  function renderCategories() {
+    catList.innerHTML = '';
+    var eg = t('eg');
+    var ui = li(state.ui);
+    CATEGORIES.forEach(function (c) {
+      var row = document.createElement('li');
+      var label = document.createElement('label'); label.className = 'cat';
+      var cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.id = 'cat-' + c.id; cb.checked = isEnabled(c);
+      cb.addEventListener('change', function () {
+        var idx = state.disabled.indexOf(c.id);
+        if (cb.checked && idx !== -1) state.disabled.splice(idx, 1);
+        if (!cb.checked && idx === -1) state.disabled.push(c.id);
+        save(); renderSettingsSummary();
+      });
+      var text = document.createElement('span'); text.className = 'cat-text';
+      var nm = document.createElement('span'); nm.className = 'cat-name'; nm.textContent = c.name[ui];
+      var ex = document.createElement('span'); ex.className = 'cat-words';
+      ex.textContent = eg + ' ' + c.words.slice(0, 3).map(function (w) { return w[ui]; }).join(', ');
+      text.appendChild(nm); text.appendChild(ex);
+      var count = document.createElement('span'); count.className = 'cat-count'; count.textContent = t('words', { n: c.words.length });
+      label.appendChild(cb); label.appendChild(text); label.appendChild(count);
+      row.appendChild(label);
+      catList.appendChild(row);
+    });
+    renderSettingsSummary();
+  }
+  function renderSettingsSummary() {
+    var n = enabledCategories().length;
+    catSummary.textContent = t('selected', { k: n, c: CATEGORIES.length }) + ' · ' + t('words', { n: poolSize() });
+    var ok = n > 0 && state.langs.length > 0;
+    settingsDone.disabled = !ok;
+    settingsDone.textContent = n === 0 ? t('need_cat') : (state.langs.length === 0 ? t('need_lang') : t('done'));
+  }
+  function setAll(enabled) {
+    state.disabled = enabled ? [] : CATEGORIES.map(function (c) { return c.id; });
+    CATEGORIES.forEach(function (c) { var cb = $('cat-' + c.id); if (cb) cb.checked = enabled; });
+    save(); renderSettingsSummary();
+  }
+  function openSettings() {
+    renderLangs();
+    renderCategories();
+    showScreen('settings');
+  }
+  $('settings-btn').addEventListener('click', openSettings);
+  $('select-all-btn').addEventListener('click', function () { setAll(true); });
+  $('select-none-btn').addEventListener('click', function () { setAll(false); });
+  settingsDone.addEventListener('click', function () {
+    if (enabledCategories().length === 0 || state.langs.length === 0) return;
+    renderPlayers();
+    showScreen('setup');
+  });
+
+  // Runde
+  function startRound() {
+    if (state.players.length < 3 || enabledCategories().length === 0 || state.langs.length === 0) return;
+    var e = pickWord();
+    state.wordCat = e.cat;
+    state.wordIdx = e.idx;
+    state.evil = rand(state.players.length);
+    state.turn = 0;
+    state.revealed = false;
+    state.starter = -1;
+    showScreen('reveal');
+    setupTurn();
+  }
+
+  var card = $('card');
+  var cover = $('cover');
+  var coverName = $('cover-name');
+  var progressText = $('progress-text');
+  var nextBtn = $('next-btn');
+  var tapReveal = $('tap-reveal');
+  var secretLabel = $('secret-label');
+  var secretWord = $('secret-word');
+  var secretAlts = $('secret-alts');
+  var secretHint = $('secret-hint');
+
+  function setupTurn() {
+    var i = state.turn;
+    var name = state.players[i];
+    var isEvil = (i === state.evil);
+    coverName.textContent = name;
+    progressText.textContent = t('progress', { i: i + 1, n: state.players.length });
+    card.classList.toggle('is-evil', isEvil);
+    if (isEvil) {
+      secretLabel.textContent = t('you_are');
+      secretWord.textContent = t('evil');
+      secretWord.className = 'word ' + sizeClass(t('evil'));
+      secretAlts.innerHTML = '';
+      secretHint.textContent = t('evil_hint');
+    } else {
+      secretLabel.textContent = t('your_word');
+      renderWordSet(secretWord, secretAlts, wordIn, 'word');
+      secretHint.textContent = t('keep_secret');
+    }
+    state.revealed = false;
+    nextBtn.hidden = true;
+    tapReveal.hidden = false;
+    // Sæt dækket tilbage uden animation
+    cover.classList.add('dragging');
+    cover.classList.remove('gone');
+    cover.style.transform = '';
+    cover.style.opacity = '';
+    void cover.offsetHeight; // tving reflow
+    cover.classList.remove('dragging');
+    cover.setAttribute('aria-label', t('cover_aria', { name: name }));
+  }
+
+  function reveal() {
+    if (state.revealed) return;
+    state.revealed = true;
+    cover.classList.remove('dragging');
+    cover.style.transform = '';
+    cover.style.opacity = '';
+    cover.classList.add('gone');
+    nextBtn.hidden = false;
+    tapReveal.hidden = true;
+    nextBtn.focus({ preventScroll: true });
+  }
+
+  function showStart() {
+    $('starter-name').textContent = state.players[state.starter] || state.players[0];
+    confirmBox.hidden = true;
+    revealRow.hidden = false;
+    showScreen('start');
+  }
+
+  function nextTurn() {
+    if (!state.revealed) return;
+    if (state.turn + 1 < state.players.length) {
+      state.turn += 1;
+      setupTurn();
+    } else {
+      state.starter = rand(state.players.length);
+      showStart();
+    }
+  }
+
+  nextBtn.addEventListener('click', nextTurn);
+  tapReveal.addEventListener('click', reveal);
+  cover.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowUp') { e.preventDefault(); reveal(); }
+  });
+
+  // Swipe op (pointer events dækker både touch og mus)
+  var drag = { active: false, startY: 0, dy: 0, id: null };
+  cover.addEventListener('pointerdown', function (e) {
+    if (state.revealed) return;
+    drag.active = true; drag.startY = e.clientY; drag.dy = 0; drag.id = e.pointerId;
+    cover.classList.add('dragging');
+    try { cover.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  cover.addEventListener('pointermove', function (e) {
+    if (!drag.active || e.pointerId !== drag.id) return;
+    var dy = Math.min(0, e.clientY - drag.startY);
+    drag.dy = dy;
+    var h = card.clientHeight || 400;
+    cover.style.transform = 'translateY(' + dy + 'px)';
+    cover.style.opacity = String(Math.max(0.15, 1 + dy / h));
+  });
+  function endDrag(e) {
+    if (!drag.active || (e && e.pointerId !== drag.id)) return;
+    drag.active = false;
+    var h = card.clientHeight || 400;
+    var threshold = Math.min(140, h * 0.3);
+    if (-drag.dy >= threshold) {
+      reveal();
+    } else {
+      cover.classList.remove('dragging');
+      cover.style.transform = '';
+      cover.style.opacity = '';
+    }
+  }
+  cover.addEventListener('pointerup', endDrag);
+  cover.addEventListener('pointercancel', endDrag);
+  cover.addEventListener('lostpointercapture', function () { if (drag.active) endDrag(); });
+
+  // Hvem starter → afsløring
+  var confirmBox = $('confirm-box');
+  var revealRow = $('reveal-row');
+  function showResult() {
+    $('result-evil').textContent = state.players[state.evil];
+    renderWordSet($('result-word'), $('result-alts'), wordIn, 'val');
+    var c = currentCategory();
+    $('result-cat').textContent = c ? t('category') + ': ' + catName(c) : '';
+    showScreen('result');
+  }
+  $('ask-reveal-btn').addEventListener('click', function () {
+    revealRow.hidden = true;
+    confirmBox.hidden = false;
+    $('confirm-reveal-btn').focus({ preventScroll: true });
+  });
+  $('cancel-reveal-btn').addEventListener('click', function () {
+    confirmBox.hidden = true;
+    revealRow.hidden = false;
+  });
+  $('confirm-reveal-btn').addEventListener('click', showResult);
+
+  $('new-round-btn').addEventListener('click', function () { startRound(); });
+  $('change-players-btn').addEventListener('click', function () {
+    renderPlayers();
+    showScreen('setup');
+  });
+
+  // ---------- Opstart (med genindlæsning ved opdatering af siden) ----------
+  function start(data) {
+    if (data && data.players && data.phase) {
+      state = Object.assign(state, data);
+      if (!Array.isArray(state.disabled)) state.disabled = [];
+      if (!validLang(state.ui)) state.ui = 'da';
+      if (!Array.isArray(state.langs) || !state.langs.length) state.langs = [state.ui];
+    } else {
+      loadSaved();
+    }
+    applyStrings();
+    renderPlayers();
+    var hasWord = !!currentCategory() && state.wordIdx >= 0;
+    if (state.phase === 'reveal' && hasWord) {
+      showScreen('reveal'); setupTurn();
+    } else if (state.phase === 'start' && hasWord) {
+      showStart();
+    } else if (state.phase === 'result' && hasWord) {
+      showResult();
+    } else if (state.phase === 'settings') {
+      openSettings();
+    } else {
+      showScreen('setup');
+    }
+  }
+  if (window.claude && window.claude.hot && window.claude.hot.snapshot) {
+    window.claude.hot.snapshot(function () { return state; });
+  }
+  if (window.claude && window.claude.hot && window.claude.hot.ready) {
+    window.claude.hot.ready(start);
+  } else {
+    start((window.claude && window.claude.hot && window.claude.hot.data) || {});
+  }
+})();
+</script>
+
+</body>
+</html>
