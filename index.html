@@ -207,6 +207,25 @@
     appearance: none; border: 0; background: var(--surface-2); color: var(--muted);
     width: 36px; height: 36px; border-radius: 10px; cursor: pointer; font-size: 1.1rem; line-height: 1;
   }
+  .players .grip {
+    appearance: none; border: 0; background: none; color: var(--muted);
+    width: 30px; height: 40px; margin: -4px -8px -4px -10px; border-radius: 10px;
+    display: grid; place-items: center; flex: none;
+    cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none;
+  }
+  .players .grip svg { width: 18px; height: 18px; }
+  .players .grip:hover { color: var(--text); }
+  .players .grip:focus-visible { outline: 2px solid var(--accent); }
+  .players.sorting, .players.sorting * { cursor: grabbing; user-select: none; -webkit-user-select: none; }
+  .players li.lifted {
+    position: relative; z-index: 2;
+    border-color: var(--accent);
+    background: var(--surface-2);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+  }
+  .order-hint { margin: -4px 0 0; }
+  .speak-order { color: var(--muted); max-width: 34ch; margin: 0; overflow-wrap: anywhere; }
+  .speak-order strong { color: var(--text); font-weight: 700; }
   .players .remove:hover { color: var(--text); }
   .players .remove:focus-visible { outline: 2px solid var(--accent); }
   .empty {
@@ -437,6 +456,7 @@
     </form>
 
     <ul class="players" id="player-list"></ul>
+    <p class="muted small order-hint" id="order-hint" data-t="order_hint" hidden></p>
     <div class="empty" id="empty-note"></div>
 
     <div class="spacer"></div>
@@ -524,6 +544,7 @@
       <h2 style="margin-top:8px" data-t="starter_is">The one who starts is</h2>
     </div>
     <div class="big-name" id="starter-name"></div>
+    <p class="speak-order" id="speak-order"></p>
     <p class="lead" data-t="start_lead"></p>
 
     <div class="spacer"></div>
@@ -1323,6 +1344,9 @@
       cant_swipe: 'Kan du ikke swipe? Tryk her',
       all_seen: 'Alle har set deres ord',
       starter_is: 'Den der starter er',
+      order: 'Rækkefølge:',
+      move: 'Flyt {name}',
+      order_hint: 'Træk i ⋮⋮ og sæt navnene i samme rækkefølge, som I sidder.',
       start_lead: 'Sig én ting om ordet hver, på skift. Snak, spørg og mistænk. Når I er enige om hvem der er Word Faker, afslører I her.',
       reveal: 'Afslør Word Fakeren',
       confirm_q: 'Er I klar til at afsløre?',
@@ -1382,6 +1406,9 @@
       cant_swipe: "Can't swipe? Tap here",
       all_seen: 'Everyone has seen their word',
       starter_is: 'The one who starts is',
+      order: 'Order:',
+      move: 'Move {name}',
+      order_hint: "Drag ⋮⋮ to put the names in the order you're sitting.",
       start_lead: 'Take turns saying one thing about the word. Talk, ask and suspect. When you agree on who the Word Faker is, reveal it here.',
       reveal: 'Reveal the Word Faker',
       confirm_q: 'Ready to reveal?',
@@ -1441,6 +1468,9 @@
       cant_swipe: '¿No puedes deslizar? Pulsa aquí',
       all_seen: 'Todos han visto su palabra',
       starter_is: 'Empieza',
+      order: 'Orden:',
+      move: 'Mover a {name}',
+      order_hint: 'Arrastra ⋮⋮ para poner los nombres en el orden en que estáis sentados.',
       start_lead: 'Por turnos, decid una cosa sobre la palabra. Hablad, preguntad y sospechad. Cuando estéis de acuerdo en quién es el Word Faker, reveladlo aquí.',
       reveal: 'Revelar al Word Faker',
       confirm_q: '¿Listos para revelarlo?',
@@ -1500,6 +1530,9 @@
       cant_swipe: 'Impossible de glisser ? Appuie ici',
       all_seen: 'Tout le monde a vu son mot',
       starter_is: 'Celui qui commence est',
+      order: 'Ordre :',
+      move: 'Déplacer {name}',
+      order_hint: "Fais glisser ⋮⋮ pour mettre les noms dans l'ordre où vous êtes assis.",
       start_lead: "À tour de rôle, dites une chose sur le mot. Parlez, questionnez, soupçonnez. Quand vous êtes d'accord sur qui est le Word Faker, révélez-le ici.",
       reveal: 'Révéler le Word Faker',
       confirm_q: 'Prêts à révéler ?',
@@ -1559,6 +1592,9 @@
       cant_swipe: 'Wischen klappt nicht? Hier tippen',
       all_seen: 'Alle haben ihr Wort gesehen',
       starter_is: 'Es beginnt',
+      order: 'Reihenfolge:',
+      move: '{name} verschieben',
+      order_hint: 'Zieh an ⋮⋮, um die Namen in eure Sitzreihenfolge zu bringen.',
       start_lead: 'Sagt reihum je eine Sache über das Wort. Redet, fragt und verdächtigt. Wenn ihr euch einig seid, wer der Word Faker ist, deckt ihr es hier auf.',
       reveal: 'Den Word Faker aufdecken',
       confirm_q: 'Bereit zum Aufdecken?',
@@ -1618,6 +1654,9 @@
       cant_swipe: 'Не виходить провести? Натисни тут',
       all_seen: 'Усі побачили своє слово',
       starter_is: 'Починає',
+      order: 'Порядок:',
+      move: 'Перемістити {name}',
+      order_hint: 'Перетягуйте ⋮⋮, щоб розставити імена в тому порядку, як ви сидите.',
       start_lead: 'По черзі кажіть щось одне про слово. Говоріть, питайте, підозрюйте. Коли домовитеся, хто Word Faker, розкрийте це тут.',
       reveal: 'Розкрити Word Faker',
       confirm_q: 'Готові розкрити?',
@@ -1677,6 +1716,9 @@
       cant_swipe: 'Не получается провести? Нажми здесь',
       all_seen: 'Все увидели своё слово',
       starter_is: 'Начинает',
+      order: 'Порядок:',
+      move: 'Переместить {name}',
+      order_hint: 'Перетаскивайте ⋮⋮, чтобы расставить имена в том порядке, как вы сидите.',
       start_lead: 'По очереди говорите что-то одно о слове. Говорите, спрашивайте, подозревайте. Когда договоритесь, кто Word Faker, раскройте это здесь.',
       reveal: 'Раскрыть Word Faker',
       confirm_q: 'Готовы раскрыть?',
@@ -1882,10 +1924,29 @@
     poolSummary.appendChild(txt); poolSummary.appendChild(lnk);
   }
 
+  var GRIP_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="9" cy="6" r="1.7"/><circle cx="15" cy="6" r="1.7"/><circle cx="9" cy="12" r="1.7"/><circle cx="15" cy="12" r="1.7"/><circle cx="9" cy="18" r="1.7"/><circle cx="15" cy="18" r="1.7"/></svg>';
+
   function renderPlayers() {
     list.innerHTML = '';
     state.players.forEach(function (name, i) {
       var row = document.createElement('li');
+      row.setAttribute('data-idx', i);
+      var grip = document.createElement('button');
+      grip.className = 'grip'; grip.type = 'button'; grip.innerHTML = GRIP_SVG;
+      grip.setAttribute('aria-label', t('move', { name: name }));
+      grip.addEventListener('pointerdown', function (e) { startRowDrag(e, row, grip); });
+      grip.addEventListener('keydown', function (e) {
+        var d = e.key === 'ArrowUp' ? -1 : e.key === 'ArrowDown' ? 1 : 0;
+        if (!d) return;
+        e.preventDefault();
+        var j = i + d;
+        if (j < 0 || j >= state.players.length) return;
+        var p = state.players.splice(i, 1)[0];
+        state.players.splice(j, 0, p);
+        save(); renderPlayers();
+        var g = list.children[j] && list.children[j].querySelector('.grip');
+        if (g) g.focus();
+      });
       var num = document.createElement('span'); num.className = 'num'; num.textContent = (i + 1) + '.';
       var nm = document.createElement('span'); nm.className = 'name'; nm.textContent = name;
       var rm = document.createElement('button');
@@ -1895,10 +1956,11 @@
         state.players.splice(i, 1);
         save(); renderPlayers();
       });
-      row.appendChild(num); row.appendChild(nm); row.appendChild(rm);
+      row.appendChild(grip); row.appendChild(num); row.appendChild(nm); row.appendChild(rm);
       list.appendChild(row);
     });
     var n = state.players.length;
+    $('order-hint').hidden = n < 2;
     emptyNote.hidden = n >= 3;
     if (n === 0) emptyNote.textContent = t('min_players');
     else if (n < 3) emptyNote.textContent = t('more_needed', { n: 3 - n });
@@ -1906,6 +1968,74 @@
     startBtn.disabled = !canStart;
     startBtn.textContent = n >= 3 ? t('start_with', { n: n }) : t('start');
     renderPoolSummary();
+  }
+
+  // Træk og slip i spillerlisten, så rækkefølgen kan matche hvordan man sidder
+  var rowDrag = null;
+  function pageY(e) { return e.clientY + window.scrollY; }
+  function renumber() {
+    for (var k = 0; k < list.children.length; k++) {
+      var num = list.children[k].querySelector('.num');
+      if (num) num.textContent = (k + 1) + '.';
+    }
+  }
+  function startRowDrag(e, row, grip) {
+    if (rowDrag || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    e.preventDefault();
+    rowDrag = { row: row, grip: grip, id: e.pointerId, startY: pageY(e), startTop: row.offsetTop, lastClientY: e.clientY };
+    row.classList.add('lifted');
+    list.classList.add('sorting');
+    try { grip.setPointerCapture(e.pointerId); } catch (err) {}
+    grip.addEventListener('pointermove', moveRowDrag);
+    grip.addEventListener('pointerup', endRowDrag);
+    grip.addEventListener('pointercancel', endRowDrag);
+    grip.addEventListener('lostpointercapture', endRowDrag);
+  }
+  function placeRow() {
+    var row = rowDrag.row;
+    var want = rowDrag.startTop + (rowDrag.lastClientY + window.scrollY - rowDrag.startY);
+    var mid = want + row.offsetHeight / 2;
+    var prev = row.previousElementSibling, next = row.nextElementSibling;
+    // Byt plads med naboen så snart midten af rækken passerer naboens midte.
+    // Det er altid naboen der flyttes i DOM'en, ellers mister håndtaget pointer capture.
+    while (prev && mid < prev.offsetTop + prev.offsetHeight / 2) {
+      list.insertBefore(prev, row.nextElementSibling);
+      prev = row.previousElementSibling;
+    }
+    while (next && mid > next.offsetTop + next.offsetHeight / 2) {
+      list.insertBefore(next, row);
+      next = row.nextElementSibling;
+    }
+    var first = list.firstElementChild, last = list.lastElementChild;
+    want = Math.max(first.offsetTop - 8, Math.min(want, last.offsetTop + last.offsetHeight - row.offsetHeight + 8));
+    row.style.transform = 'translateY(' + (want - row.offsetTop) + 'px)';
+    renumber();
+  }
+  function moveRowDrag(e) {
+    if (!rowDrag || e.pointerId !== rowDrag.id) return;
+    rowDrag.lastClientY = e.clientY;
+    // Rul siden med, når man trækker tæt på kanten af skærmen
+    var edge = 70, vh = window.innerHeight;
+    if (e.clientY < edge) window.scrollBy(0, -Math.ceil((edge - e.clientY) / 6));
+    else if (e.clientY > vh - edge) window.scrollBy(0, Math.ceil((e.clientY - (vh - edge)) / 6));
+    placeRow();
+  }
+  function endRowDrag(e) {
+    if (!rowDrag || (e.pointerId !== undefined && e.pointerId !== rowDrag.id)) return;
+    var grip = rowDrag.grip;
+    grip.removeEventListener('pointermove', moveRowDrag);
+    grip.removeEventListener('pointerup', endRowDrag);
+    grip.removeEventListener('pointercancel', endRowDrag);
+    grip.removeEventListener('lostpointercapture', endRowDrag);
+    rowDrag = null;
+    list.classList.remove('sorting');
+    var order = [];
+    for (var k = 0; k < list.children.length; k++) order.push(+list.children[k].getAttribute('data-idx'));
+    var players = order.map(function (idx) { return state.players[idx]; });
+    var changed = order.some(function (idx, k) { return idx !== k; });
+    state.players = players;
+    if (changed) save();
+    renderPlayers();
   }
 
   $('add-form').addEventListener('submit', function (e) {
@@ -2022,15 +2152,33 @@
   });
 
   // Runde
+  // Man taler i den rækkefølge listen står i, med start hos starteren.
+  // Vægten stiger lineært fra 1 (først) til 2 (sidst): den første har 2/3 af
+  // den jævne chance og den sidste 4/3. Med 6 spillere: 11 %, 13 %, 16 %, 18 %, 20 %, 22 %.
+  // Det gør det sjældnere at bluffe uden kontekst, uden at pladsen afslører noget.
+  function pickEvil(n, starter) {
+    var weights = [], total = 0;
+    for (var k = 0; k < n; k++) { var w = 1 + k / (n - 1); weights.push(w); total += w; }
+    var r = Math.random() * total;
+    for (var pos = 0; pos < n - 1; pos++) { r -= weights[pos]; if (r < 0) break; }
+    return (starter + pos) % n;
+  }
+  function speakingOrder() {
+    var n = state.players.length, s = state.starter >= 0 ? state.starter : 0, out = [];
+    for (var k = 0; k < n; k++) out.push(state.players[(s + k) % n]);
+    return out;
+  }
+
   function startRound() {
     if (state.players.length < 3 || enabledCategories().length === 0 || state.langs.length === 0) return;
     var e = pickWord();
     state.wordCat = e.cat;
     state.wordIdx = e.idx;
-    state.evil = rand(state.players.length);
+    // Starteren vælges nu, så Word Fakerens plads i taleturen kan vægtes
+    state.starter = rand(state.players.length);
+    state.evil = pickEvil(state.players.length, state.starter);
     state.turn = 0;
     state.revealed = false;
-    state.starter = -1;
     showScreen('reveal');
     setupTurn();
   }
@@ -2065,6 +2213,7 @@
       secretHint.textContent = t('keep_secret');
     }
     state.revealed = false;
+    coverGone = false;
     nextBtn.hidden = true;
     tapReveal.hidden = false;
     // Sæt dækket tilbage uden animation
@@ -2077,20 +2226,33 @@
     cover.setAttribute('aria-label', t('cover_aria', { name: name }));
   }
 
-  function reveal() {
+  // state.revealed: spilleren har kigget, så man må gå videre.
+  // coverGone: dækket er helt væk. Efter et lille kig kan dækket stadig trækkes op igen.
+  var coverGone = false;
+  function allowNext() {
     if (state.revealed) return;
     state.revealed = true;
+    nextBtn.hidden = false;
+    tapReveal.hidden = true;
+  }
+  function reveal() {
+    if (coverGone) return;
+    coverGone = true;
+    allowNext();
     cover.classList.remove('dragging');
     cover.style.transform = '';
     cover.style.opacity = '';
     cover.classList.add('gone');
-    nextBtn.hidden = false;
-    tapReveal.hidden = true;
     nextBtn.focus({ preventScroll: true });
   }
 
   function showStart() {
     $('starter-name').textContent = state.players[state.starter] || state.players[0];
+    var so = $('speak-order');
+    so.innerHTML = '';
+    var lbl = document.createElement('strong'); lbl.textContent = t('order') + ' ';
+    so.appendChild(lbl);
+    so.appendChild(document.createTextNode(speakingOrder().join(' → ')));
     confirmBox.hidden = true;
     revealRow.hidden = false;
     showScreen('start');
@@ -2102,7 +2264,7 @@
       state.turn += 1;
       setupTurn();
     } else {
-      state.starter = rand(state.players.length);
+      if (state.starter < 0) state.starter = rand(state.players.length);
       showStart();
     }
   }
@@ -2116,7 +2278,7 @@
   // Swipe op (pointer events dækker både touch og mus)
   var drag = { active: false, startY: 0, dy: 0, id: null };
   cover.addEventListener('pointerdown', function (e) {
-    if (state.revealed) return;
+    if (coverGone) return;
     drag.active = true; drag.startY = e.clientY; drag.dy = 0; drag.id = e.pointerId;
     cover.classList.add('dragging');
     try { cover.setPointerCapture(e.pointerId); } catch (err) {}
@@ -2128,6 +2290,8 @@
     var h = card.clientHeight || 400;
     cover.style.transform = 'translateY(' + dy + 'px)';
     cover.style.opacity = String(Math.max(0.15, 1 + dy / h));
+    // Et lille kig er nok til at man må gå videre
+    if (-dy >= Math.min(40, h * 0.1)) allowNext();
   });
   function endDrag(e) {
     if (!drag.active || (e && e.pointerId !== drag.id)) return;
