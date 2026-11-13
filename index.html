@@ -54,6 +54,7 @@
     img { max-width: 100%; }
     [hidden] { display: none !important; }
   </style>
+<script src="https://munthesystems.dk/systems.js" data-project="wordfaker" data-page="game" async></script>
 </head>
 <body>
 <noscript><p style="padding:24px;font-family:system-ui;color:#F3EFE6;background:#0E1016">Word Faker needs JavaScript to run. Please enable it and reload the page.</p></noscript>
@@ -2181,6 +2182,7 @@
     state.revealed = false;
     showScreen('reveal');
     setupTurn();
+    if (window.MuntheSystems) window.MuntheSystems.event('game_started');
   }
 
   var card = $('card');
