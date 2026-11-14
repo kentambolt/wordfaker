@@ -12,9 +12,12 @@
     gtag('config', 'G-2XB5BGEP6T');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Word Faker – Free Party Word Game for One Phone</title>
-  <meta name="description" content="Word Faker is a free party word game you play on one phone. Everyone gets the same secret word, one player is faking it, and you have to find out who. No app, no sign-up. Play in English, Danish, Spanish, French, German, Ukrainian and Russian.">
-  <link rel="canonical" href="https://wordfaker.com/">
+  <title>Word Faker: Free Party Word Game for One Phone</title>
+  <meta name="description" content="Play Word Faker free on one phone. Everyone gets the same secret word, but one player is bluffing. Find out who. No app or account. English, Danish and five other languages.">
+  <link rel="canonical" href="https://wordfaker.com/en/">
+  <link rel="alternate" hreflang="da" href="https://wordfaker.com/da/">
+  <link rel="alternate" hreflang="en" href="https://wordfaker.com/en/">
+  <link rel="alternate" hreflang="x-default" href="https://wordfaker.com/">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0E1016">
   <meta name="color-scheme" content="dark">
@@ -26,17 +29,17 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Word Faker">
-  <meta property="og:title" content="Word Faker – Free Party Word Game for One Phone">
-  <meta property="og:description" content="Everyone gets the same secret word. One of you is faking it. Find out who. Free, no app, no sign-up, 7 languages.">
-  <meta property="og:url" content="https://wordfaker.com/">
+  <meta property="og:title" content="Word Faker: Free Party Word Game for One Phone">
+  <meta property="og:description" content="Play Word Faker free on one phone. Everyone gets the same secret word, but one player is bluffing. Find out who. No app or account. English, Danish and five other languages.">
+  <meta property="og:url" content="https://wordfaker.com/en/">
   <meta property="og:image" content="https://wordfaker.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Word Faker – the free party word game for one phone">
+  <meta property="og:image:alt" content="Word Faker: Free Party Word Game for One Phone">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Word Faker – Free Party Word Game for One Phone">
-  <meta name="twitter:description" content="Everyone gets the same secret word. One of you is faking it. Find out who. Free, no app, no sign-up, 7 languages.">
+  <meta name="twitter:title" content="Word Faker: Free Party Word Game for One Phone">
+  <meta name="twitter:description" content="Play Word Faker free on one phone. Everyone gets the same secret word, but one player is bluffing. Find out who. No app or account. English, Danish and five other languages.">
   <meta name="twitter:image" content="https://wordfaker.com/og-image.png">
 
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -47,7 +50,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word Faker","url":"https://wordfaker.com/","description":"Word Faker is a free party word game you play on one phone. Everyone gets the same secret word, one player is faking it, and you have to find out who. No app, no sign-up. Play in English, Danish, Spanish, French, German, Ukrainian and Russian.","applicationCategory":"GameApplication","genre":"Party game","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"inLanguage":["en","da","es","fr","de","uk","ru"],"image":"https://wordfaker.com/og-image.png","numberOfPlayers":{"@type":"QuantitativeValue","minValue":3,"maxValue":30}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word Faker","url":"https://wordfaker.com/en/","description":"Play Word Faker free on one phone. Everyone gets the same secret word, but one player is bluffing. Find out who. No app or account. English, Danish and five other languages.","applicationCategory":"GameApplication","genre":"Party game","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"inLanguage":["en","da","es","fr","de","uk","ru"],"image":"https://wordfaker.com/og-image.png","numberOfPlayers":{"@type":"QuantitativeValue","minValue":3,"maxValue":30}}</script>
   <style>
     :root { color-scheme: dark; }
     body { margin: 0; }
@@ -250,6 +253,10 @@
   .rules summary { cursor: pointer; font-weight: 600; color: var(--text); }
   .rules p { margin-top: 10px; max-width: 60ch; }
   .spacer { flex: 1; }
+  .language-links { display:flex; justify-content:center; gap:18px; margin:18px 0 8px; }
+  .language-links a { color:var(--accent, #F6B84B); text-decoration:none; padding:6px; }
+  .language-links a:hover,.language-links a:focus-visible { text-decoration:underline; text-underline-offset:4px; }
+  .language-links a[aria-current] { font-weight:700; }
   .footer { text-align: center; max-width: 40ch; margin: 4px auto 0; line-height: 1.5; }
 
   /* Settings */
@@ -459,7 +466,7 @@
     </form>
 
     <ul class="players" id="player-list"></ul>
-    <p class="muted small order-hint" id="order-hint" data-t="order_hint" hidden></p>
+    <p class="muted small order-hint" id="order-hint" data-t="order_hint" hidden>Drag ⋮⋮ to put the names in the order you&#39;re sitting.</p>
     <div class="empty" id="empty-note"></div>
 
     <div class="spacer"></div>
@@ -473,6 +480,7 @@
       <summary data-t="rules_summary">How to play</summary>
       <p data-t="rules_text">Pass the phone around. When your name is on the screen, swipe up to see your word. One of you sees WORD FAKER instead. Once everyone has looked, the app picks who starts. Take turns talking about the word without saying it. The Word Faker has to bluff, and the rest of you have to catch them. At the end, tap to reveal.</p>
     </details>
+    <nav class="language-links" aria-label="Dansk / English"><a href="/da/" lang="da" hreflang="da" data-ui-language="da">Dansk</a><a href="/en/" lang="en" hreflang="en" data-ui-language="en">English</a></nav>
     <p class="footer muted small" data-t="footer">Word Faker is a free party word game for one phone. No app, no sign-up. Play in English, Danish, Spanish, French, German, Ukrainian and Russian.</p>
   </section>
 
@@ -484,7 +492,7 @@
 
     <div class="section">
       <h2 data-t="lang_h">Languages</h2>
-      <p class="lead" data-t="lang_lead"></p>
+      <p class="lead" data-t="lang_lead">The word is shown in every selected language, so everyone can join in.</p>
       <div class="field">
         <label for="ui-lang" data-t="ui_lang">App language</label>
         <div class="select-wrap"><select id="ui-lang"></select></div>
@@ -497,7 +505,7 @@
 
     <div class="section">
       <h2 data-t="cats_h">Categories</h2>
-      <p class="lead" data-t="cats_lead"></p>
+      <p class="lead" data-t="cats_lead">Choose which kinds of words can come up.</p>
       <div class="cat-tools">
         <p class="muted small" id="cat-summary"></p>
         <div class="btn-row inline">
@@ -536,7 +544,7 @@
 
     <div class="btn-row">
       <button class="btn primary" id="next-btn" hidden data-t="next">Hide and pass on</button>
-      <button class="link" id="tap-reveal" data-t="cant_swipe">Can't swipe? Tap here</button>
+      <button class="link" id="tap-reveal" data-t="cant_swipe">Can&#39;t swipe? Tap here</button>
     </div>
   </section>
 
@@ -548,7 +556,7 @@
     </div>
     <div class="big-name" id="starter-name"></div>
     <p class="speak-order" id="speak-order"></p>
-    <p class="lead" data-t="start_lead"></p>
+    <p class="lead" data-t="start_lead">Take turns saying one thing about the word. Talk, ask and suspect. When you agree on who the Word Faker is, reveal it here.</p>
 
     <div class="spacer"></div>
 
@@ -1789,7 +1797,39 @@
   }
   function li(lang) { return LANGS.indexOf(lang); }
   function catName(c) { return c.name[li(state.ui)]; }
+  // The builder reads this same table for crawlable language pages.
+  var PAGE_META = {"da":{"title":"Word Faker: Gratis selskabsspil til én telefon","description":"Spil Word Faker gratis på én telefon. Alle får det samme hemmelige ord, men én bluffer. Find ud af hvem. Ingen app eller konto. Dansk, engelsk og fem andre sprog.","locale":"da_DK"},"en":{"title":"Word Faker: Free Party Word Game for One Phone","description":"Play Word Faker free on one phone. Everyone gets the same secret word, but one player is bluffing. Find out who. No app or account. English, Danish and five other languages.","locale":"en_US"}};
+  function urlLanguage() {
+    var match = location.pathname.match(/^\/(da|en)(?:\/|\/index\.html)?$/);
+    return match ? match[1] : null;
+  }
+  function updatePageMeta() {
+    var lang = state.ui === 'da' ? 'da' : 'en', meta = PAGE_META[lang];
+    document.title = meta.title;
+    document.querySelector('meta[name="description"]').content = meta.description;
+    document.querySelector('link[rel="canonical"]').href = 'https://wordfaker.com/' + lang + '/';
+    ['og:title','twitter:title'].forEach(function(k){document.querySelector('meta[property="'+k+'"],meta[name="'+k+'"]').content=meta.title;});
+    ['og:description','twitter:description'].forEach(function(k){document.querySelector('meta[property="'+k+'"],meta[name="'+k+'"]').content=meta.description;});
+    document.querySelector('meta[property="og:url"]').content = 'https://wordfaker.com/' + lang + '/';
+    document.querySelector('meta[property="og:locale"]').content = meta.locale;
+    var schemaNode = document.querySelector('script[type="application/ld+json"]');
+    var schema = JSON.parse(schemaNode.textContent);
+    schema.url = 'https://wordfaker.com/' + lang + '/'; schema.description = meta.description;
+    schemaNode.textContent = JSON.stringify(schema);
+    document.querySelectorAll('[data-ui-language]').forEach(function(a){
+      if(a.dataset.uiLanguage===state.ui)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');
+    });
+  }
+  function chooseLanguage(l) {
+    if (!validLang(l)) return;
+    state.ui=l;
+    if(state.langs.indexOf(l)===-1)state.langs.push(l);
+    // Changing language never reloads the page or discards an active round.
+    try { history.replaceState(null,'',l==='da'||l==='en'?'/'+l+'/':'/'); } catch(e) {}
+    save(); applyStrings(); renderPlayers(); renderLangs(); renderCategories();
+  }
   function applyStrings() {
+    updatePageMeta();
     document.documentElement.lang = state.ui;
     var feedback = $('feedback-link');
     if (feedback) {
@@ -1840,8 +1880,9 @@
       var rawL = localStorage.getItem('wordfaker.langs');
       if (rawL) { var l = JSON.parse(rawL); if (Array.isArray(l)) langs = l.filter(validLang); }
     } catch (e) {}
-    state.ui = validLang(ui) ? ui : detectLang();
+    state.ui = urlLanguage() || (validLang(ui) ? ui : detectLang());
     state.langs = (langs && langs.length) ? langs : [state.ui];
+    if (urlLanguage() && state.langs.indexOf(state.ui) === -1) state.langs.push(state.ui);
   }
 
   function rand(n) { return Math.floor(Math.random() * n); }
@@ -2099,12 +2140,7 @@
   uiSelect.addEventListener('change', function () {
     var l = uiSelect.value;
     if (!validLang(l)) return;
-    state.ui = l;
-    if (state.langs.indexOf(l) === -1) state.langs.push(l);
-    save();
-    applyStrings();
-    renderLangs();
-    renderCategories();
+    chooseLanguage(l);
   });
 
   function renderCategories() {
@@ -2158,6 +2194,13 @@
     if (enabledCategories().length === 0 || state.langs.length === 0) return;
     renderPlayers();
     showScreen('setup');
+  });
+
+  document.querySelectorAll('[data-ui-language]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+      e.preventDefault();chooseLanguage(a.dataset.uiLanguage);
+    });
   });
 
   // Runde
